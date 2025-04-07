@@ -1,0 +1,851 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    font-family: Arial, sans-serif; /* Consider using a more modern font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    width: 90%;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+header p {
+    font-size: 1.5rem;
+    margin-bottom: 2em;
+}
+
+main h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 1em;
+    margin-bottom: 1em;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+}
+
+.social-signup {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.social-signup img {
+    height: 1.5em; /* Adjust as needed */
+    margin-right: 0.5em;
+}
+
+
+/* Placeholder for actual logos - you'll need to add these */
+.social-signup.google img {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/><path d="M1 1h22v22H1z" fill="none"/></svg>');
+}
+
+.social-signup.apple img {
+    content: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 0 24 24" width="24"><path d="M17.53 12.05c0-1.9-1.4-3.62-3.14-3.62-1.79 0-2.5.87-3.38.87-.89 0-1.7-.89-3.07-.89-1.71 0-3.27 1.46-3.27 3.91 0 2.74 1.04 5.8 2.71 7.73.83.96 1.73 2.02 2.94 2.02 1.18 0 1.53-.73 3.01-.73s1.75.73 3.05.73c1.27 0 2.04-1.02 2.86-2.02 1.16-1.39 1.68-2.94 1.68-4.62 0-.11.02-.23.02-.35zm-4.66 7.49c-.54.73-1.07 1.46-1.99 1.46s-1.33-.71-1.96-1.46c-.97-1.14-1.78-2.89-1.78-4.47 0-1.6.87-2.93 2.02-2.93 1.1 0 1.85.91 2.64.91s1.43-.91 2.55-.91c1.13 0 1.8.98 1.8 2.43 0 1.98-.99 3.49-1.88 4.97z"/><path d="M17.42 6.57c.9-.98.79-2.49-.39-3.35-.7-.52-1.59-.69-2.41-.54.8-.93 1.8-1.62 2.8-1.68"/></svg>');
+    filter: invert(1);
+}
+
+.divider {
+    margin: 1.5em 0;
+    position: relative;
+    color: #aaa;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #333;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.create-account {
+    background-color: #1DA1F2; /* Twitter Blue */
+    color: #fff;
+}
+
+.terms {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.terms a {
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+footer p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5em;
+}
+
+.sign-in {
+    background-color: transparent;
+    color: #1DA1F2;
+    border: 1px solid #38444d;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(91, 112, 131, 0.4); /* Semi-transparent background like X */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: #000;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px; /* Max width similar to X */
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Position top-left like X */
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    width: auto; /* Override default button width */
+    margin: 0;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #aaa; /* Lighter label color */
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #000;
+    border: 1px solid #38444d; /* Similar border to sign-in button */
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1DA1F2;
+}
+
+.input-hint {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+.submit-btn {
+     background-color: #fff; /* White button like X's next/signup */
+    color: #000;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    /* Inherits padding, border-radius etc. from general button styles */
+}
+
+
+/* Utility class to hide elements */
+.hidden {
+    display: none;
+}
+
+/* Specific Sign-in Modal Styles */
+#sign-in-modal .modal-content {
+    /* Sign-in modal might be slightly smaller if needed, adjust max-width */
+    /* max-width: 500px; */
+}
+
+#sign-in-modal .modal-title {
+    font-size: 1.8rem; /* Slightly larger title maybe? */
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+
+/* Ensure social buttons in sign-in modal have enough margin */
+#sign-in-modal .social-signup {
+    margin-bottom: 1em;
+}
+
+#sign-in-modal .divider {
+    margin: 1.5em 0;
+}
+
+#sign-in-modal .form-group input[type="text"] {
+    /* Input specific styles if different from create account */
+    padding: 1.2em 1em;
+}
+
+.next-btn {
+    background-color: #fff; /* White next button */
+    color: #000;
+    font-weight: bold;
+    /* Inherits padding, border-radius etc. */
+    margin-top: 1em; /* Add some space before forgot password */
+}
+
+.forgot-password-btn {
+    background-color: transparent;
+    color: #fff; /* White text */
+    border: 1px solid #536471; /* Grey border like X */
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 2em; /* Space before sign up prompt */
+}
+
+.signup-prompt {
+    color: #71767b; /* Grey text */
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.signup-prompt a.open-signup-link {
+    color: #1DA1F2; /* Standard link blue */
+    text-decoration: none;
+}
+
+.signup-prompt a.open-signup-link:hover {
+    text-decoration: underline;
+}
+
+/* === Marketplace Styles (app.html) === */
+
+.marketplace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; /* Adjust padding as needed */
+    margin-bottom: 1rem;
+}
+
+.marketplace-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.marketplace-header .actions .action-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Circular buttons */
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    padding: 0; /* Reset padding */
+    display: inline-flex; /* Use flex for centering icon */
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.marketplace-filters {
+    display: flex;
+    gap: 0.5rem; /* Space between buttons */
+    margin-bottom: 1.5rem;
+}
+
+.marketplace-filters button {
+    background: #333;
+    color: #fff;
+    padding: 0.5em 1.5em;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: auto; /* Fit content */
+    margin: 0; /* Reset margin */
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Responsive grid */
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.product-item {
+    background-color: #111; /* Slightly lighter than body background */
+    border-radius: 8px;
+    overflow: hidden; /* Keep image corners rounded */
+    cursor: pointer;
+}
+
+.product-item img {
+    display: block;
+    width: 100%;
+    height: 150px; /* Fixed height for images */
+    object-fit: cover; /* Cover the area, might crop */
+}
+
+.product-item p {
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+}
+
+.product-item .price {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.product-item .name {
+    font-size: 0.9rem;
+    color: #ccc;
+    padding-top: 0; /* Reduce space below price */
+}
+
+/* === App Layout Styles (app.html) === */
+
+body.app-layout {
+    display: flex; /* Override initial body styles */
+    justify-content: flex-start; /* Align items to start for flex */
+    align-items: stretch; /* Stretch items vertically */
+    text-align: left;
+    padding-bottom: 0; /* Remove bottom padding */
+}
+
+.sidebar {
+    width: 240px; /* Adjust width as needed */
+    background-color: #000; /* Sidebar background */
+    padding: 1.5rem 1rem;
+    border-right: 1px solid #38444d; /* Separator line */
+    display: flex;
+    flex-direction: column;
+    position: fixed; /* Keep sidebar fixed */
+    height: 100%;
+    left: 0; /* Ensure it starts at left */
+    top: 0; /* Ensure it starts at top */
+    z-index: 100;
+}
+.main-content {
+    flex-grow: 1; /* Take remaining space */
+    padding: 1.5rem;
+    margin-left: 240px; /* Offset by sidebar width */
+    overflow-y: auto; /* Allow content scrolling */
+}
+
+/* Sidebar specific styles */
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    /* Add logo styling */
+}
+.sidebar-search {
+    display: flex;
+    align-items: center; /* Align icon and input */
+    background-color: #222;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+.sidebar-search input {
+    background: none;
+    border: none;
+    color: #fff;
+    outline: none;
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+ .sidebar-search span { /* Placeholder for icon */
+     color: #aaa;
+ }
+
+.sidebar-nav a.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    background: none; /* Explicitly no background */
+    border: none; /* Remove button border */
+    width: 100%; /* Make links full width */
+    text-align: left; /* Align text left */
+    cursor: pointer;
+}
+.sidebar-nav a.nav-link:hover {
+    background-color: #222;
+}
+.sidebar-nav a.nav-link.active {
+    background-color: #333;
+    font-weight: bold;
+}
+ .sidebar-nav a.nav-link span.icon { /* Placeholder icons */
+    margin-right: 1rem;
+    font-size: 1.3rem;
+    width: 24px; /* Align text */
+    display: inline-block;
+    text-align: center;
+}
+.sidebar-footer {
+    margin-top: auto; /* Push footer down */
+    padding-top: 1rem; /* Space above footer */
+    font-size: 0.8rem;
+    color: #aaa;
+}
+.sidebar-footer a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 0.3rem;
+}
+ .sidebar-footer a:hover {
+     text-decoration: underline;
+ }
+
+ .logout-btn {
+    background: none;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; /* Make it block */
+    width: 100%; /* Full width */
+    margin-top: 1rem; /* Space above */
+    margin-bottom: 0.5rem; /* Space below */
+    text-align: center;
+ }
+
+ .logout-btn:hover {
+     background-color: #222;
+     color: #fff;
+ }
+
+ /* === Explore Page Styles (app.html) === */
+
+ .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    grid-auto-rows: minmax(150px, auto); /* Adjust min row height as needed */
+    gap: 4px; /* Small gap like Instagram */
+ }
+
+ .explore-item {
+     background-color: #222; /* Placeholder background */
+     overflow: hidden;
+     position: relative; /* For potential overlays */
+     cursor: pointer;
+ }
+
+ /* Example classes for items spanning multiple rows/columns */
+ .explore-item.tall {
+     grid-row: span 2;
+ }
+ .explore-item.wide {
+     grid-column: span 2;
+ }
+ /* Combine them for larger items */
+ .explore-item.large {
+     grid-column: span 2;
+     grid-row: span 2;
+ }
+
+
+ .explore-item img {
+     display: block;
+     width: 100%;
+     height: 100%;
+     object-fit: cover; /* Cover the grid item area */
+ }
+
+ /* Make grid responsive on smaller screens if needed */
+ @media (max-width: 768px) {
+    .explore-grid {
+        grid-template-columns: repeat(3, 1fr); /* Maintain 3 columns for mobile feel */
+        grid-auto-rows: minmax(120px, auto); /* Adjust row height */
+        gap: 2px; /* Even smaller gap */
+    }
+    /* Adjust spans if needed on smaller screens, e.g., disable wide/tall */
+    .explore-item.tall {
+         grid-row: span 1; /* Example: Force normal height */
+     }
+     .explore-item.wide {
+         grid-column: span 1; /* Example: Force normal width */
+     }
+     .explore-item.large {
+         grid-column: span 1;
+         grid-row: span 1;
+     }
+ }
+
+ /* === Messages Page Styles (app.html) === */
+
+ .messages-container {
+    /* Container styling if needed */
+ }
+
+ .messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; /* Match marketplace header padding */
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #38444d; /* Separator line */
+ }
+
+ .messages-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+ }
+
+ .messages-header .new-message-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    /* Inherit action-btn styles if needed, or style separately */
+    /* Example: Reuse action-btn size */
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+ }
+
+ .chat-list {
+    /* Styling for the list container */
+ }
+
+ .chat-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #222; /* Subtle separator */
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+ }
+
+ .chat-item:hover {
+    background-color: #111;
+ }
+
+ .chat-item .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+ }
+
+ .chat-preview {
+    flex-grow: 1;
+    overflow: hidden; /* Prevent long text overflow */
+ }
+
+ .chat-preview p {
+    margin: 0;
+    white-space: nowrap; /* Keep on one line */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add ... for overflow */
+ }
+
+ .chat-preview .chat-name {
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 0.2rem;
+    color: #fff;
+ }
+
+ .chat-preview .last-message {
+    font-size: 0.9rem;
+    color: #aaa;
+ }
+
+ .chat-item .timestamp {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-left: 1rem;
+    white-space: nowrap;
+ }
+
+ /* Style for active/unread messages */
+ .chat-item.active .chat-name,
+ .chat-item.active .last-message {
+    font-weight: bold; /* Make text bold */
+    color: #fff; /* Brighter text */
+ }
+ .chat-item.active .last-message::before {
+     content: "• "; /* Add a dot for unread indication */
+     color: #1DA1F2; /* Or your preferred highlight color */
+     font-weight: bold;
+ }
+
+ /* === Profile Page Styles (app.html) === */
+
+ .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+ }
+
+ .profile-avatar {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 3rem; /* Space between avatar and info */
+    object-fit: cover;
+    flex-shrink: 0; /* Prevent avatar from shrinking */
+ }
+
+ .profile-info {
+    flex-grow: 1;
+ }
+
+ .profile-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+ }
+
+ .profile-title .username {
+    font-size: 1.8rem; /* Larger username */
+    font-weight: 300; /* Lighter font weight like IG */
+    margin-right: 1.5rem;
+ }
+
+ .profile-action-btn {
+    background-color: #333; /* Darker button background */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-right: 0.8rem;
+    width: auto; /* Override default width */
+    margin-bottom: 0; /* Override default margin */
+ }
+
+ .profile-action-btn.icon-btn {
+    background: none;
+    font-size: 1.5rem;
+    padding: 0;
+    width: auto;
+    margin-right: 0;
+ }
+
+ .profile-stats {
+    display: flex;
+    margin-bottom: 1.5rem;
+ }
+
+ .profile-stats span {
+    margin-right: 2.5rem; /* Spacing between stats */
+    font-size: 1rem;
+ }
+
+ .profile-stats span strong {
+    font-weight: bold;
+ }
+
+ .profile-bio .name {
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+ }
+
+ .profile-bio p {
+    margin: 0;
+    margin-bottom: 0.3rem;
+    line-height: 1.4;
+ }
+
+ .profile-bio a {
+    color: #1DA1F2; /* Link color */
+    text-decoration: none;
+    font-weight: bold;
+ }
+
+ .profile-highlights {
+    display: flex;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #38444d;
+ }
+
+ .highlight-item {
+    text-align: center;
+    margin-right: 1.5rem;
+    cursor: pointer;
+ }
+
+ .highlight-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid #555; /* Subtle border */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    overflow: hidden; /* Clip image */
+ }
+
+ .highlight-circle img {
+     width: 100%;
+     height: 100%;
+     object-fit: cover;
+ }
+
+ .highlight-circle.add-highlight {
+     font-size: 2rem;
+     color: #777;
+ }
+
+ .highlight-name {
+    font-size: 0.8rem;
+ }
+
+ .profile-content-tabs {
+    display: flex;
+    justify-content: center; /* Center tabs */
+    border-top: 1px solid #38444d;
+    margin-bottom: 1rem; /* Space before grid */
+ }
+
+ .profile-content-tabs .tab-item {
+    background: none;
+    border: none;
+    color: #aaa;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-top: 1px solid transparent; /* Placeholder for active border */
+    margin-top: -1px; /* Overlap border */
+    width: auto;
+    margin-bottom: 0;
+ }
+
+ .profile-content-tabs .tab-item.active {
+    color: #fff;
+    border-top: 1px solid #fff;
+ }
+
+ .profile-content-tabs .tab-item .icon {
+    margin-right: 0.5rem;
+ }
+
+ .profile-posts-grid {
+    /* Reuse .explore-grid styles */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+ }
+
+/* === Floating Action Button (FAB) Styles === */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1DA1F2; /* X Blue */
+    color: #fff;
+    border: none;
+    border-radius: 50%; /* Circular */
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem; /* Icon size */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    cursor: pointer;
+    display: flex; /* Center icon */
+    justify-content: center;
+    align-items: center;
+    z-index: 1010; /* Above most content */
+    /* Reset other button styles */
+    padding: 0;
+    margin: 0;
+    width: 60px; /* Explicit width */
+}
+
+.fab:hover {
+    background-color: #1a91da; /* Slightly darker blue on hover */
+} 

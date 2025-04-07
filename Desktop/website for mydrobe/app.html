@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mydrobe App</title>
+    <link rel="stylesheet" href="style.css"> 
+    <!-- Consider moving styles below to style.css -->
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex; /* Use flex for sidebar layout */
+            margin: 0;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 240px; /* Adjust width as needed */
+            background-color: #000; /* Sidebar background */
+            padding: 1.5rem 1rem;
+            border-right: 1px solid #38444d; /* Separator line */
+            display: flex;
+            flex-direction: column;
+            position: fixed; /* Keep sidebar fixed */
+            height: 100%;
+        }
+        .main-content {
+            flex-grow: 1; /* Take remaining space */
+            padding: 1.5rem;
+            margin-left: 240px; /* Offset by sidebar width */
+            overflow-y: auto; /* Allow content scrolling */
+        }
+
+        /* Sidebar specific styles */
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            /* Add logo styling */
+        }
+        .sidebar-search {
+            display: flex;
+            background-color: #222;
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-search input {
+            background: none;
+            border: none;
+            color: #fff;
+            outline: none;
+            flex-grow: 1;
+            margin-left: 0.5rem;
+        }
+         .sidebar-search span { /* Placeholder for icon */
+             color: #aaa;
+         }
+
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0.5rem;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        .sidebar-nav a:hover {
+            background-color: #222;
+        }
+        .sidebar-nav a.active {
+            background-color: #333;
+            font-weight: bold;
+        }
+         .sidebar-nav a span.icon { /* Placeholder icons */
+            margin-right: 1rem;
+            font-size: 1.3rem;
+            width: 24px; /* Align text */
+            display: inline-block;
+            text-align: center;
+        }
+        .sidebar-footer {
+            margin-top: auto; /* Push footer down */
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+        .sidebar-footer a {
+            color: #aaa;
+            text-decoration: none;
+            margin: 0 0.3rem;
+        }
+         .sidebar-footer a:hover {
+             text-decoration: underline;
+         }
+
+    </style>
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="sidebar-logo">mydrobe</div>
+        <div class="sidebar-search">
+            <span>🔍</span>
+            <input type="text" placeholder="Search">
+        </div>
+        <nav class="sidebar-nav" id="sidebar-nav">
+            <!-- Navigation Links - data-section matches JS logic -->
+            <a href="#" class="nav-link active" data-section="home">
+                <span class="icon">🏠</span> Home
+            </a>
+            <a href="#" class="nav-link" data-section="explore">
+                 <span class="icon">🧭</span> Explore
+            </a>
+             <a href="#" class="nav-link" data-section="messages">
+                <span class="icon">✉️</span> Messages
+            </a>
+             <a href="#" class="nav-link" data-section="profile">
+                <span class="icon">👤</span> Profile
+            </a>
+            <!-- Add More link if needed -->
+        </nav>
+
+        <div class="sidebar-footer">
+             <a href="#">Terms</a>
+            <a href="#">Privacy</a>
+             <button id="logout-button" class="logout-btn">Log Out</button>
+            <p>© 2024 mydrobe</p>
+        </div>
+
+    </aside>
+
+    <main class="main-content" id="app-content">
+        <!-- Content will be loaded here by JavaScript -->
+         <h1>Welcome to mydrobe (Home Placeholder)</h1>
+    </main>
+
+    <!-- Floating Action Button -->
+    <button class="fab" id="fab-create" aria-label="Create new post">➕</button>
+
+    <script src="script.js"></script> 
+</body>
+</html> 

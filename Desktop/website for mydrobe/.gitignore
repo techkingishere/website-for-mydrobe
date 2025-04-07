@@ -1,0 +1,25 @@
+# Ignore Operating System files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.swp
+*~
+
+# Ignore build artifacts and caches
+.gradle/
+build/
+
+# Ignore dependency directories (if you were using node, etc.)
+node_modules/
+
+# Ignore system/user specific directories (like AppData)
+AppData/
+
+# React project dependencies
+mydrobe-webapp/node_modules/
+# React project build output (Netlify will handle this, but good practice to ignore)
+mydrobe-webapp/dist/ 
