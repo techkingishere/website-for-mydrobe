@@ -1,11 +1,18 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom'; // Use Outlet for nested routes
+import { signOut } from "firebase/auth"; // <-- Import Firebase signout
+import { auth } from '../firebaseConfig'; // <-- Import auth
 
 const AppLayout: React.FC = () => {
 
-  const handleLogout = () => {
-    localStorage.removeItem('isLoggedIn');
-    window.location.href = '/'; // Redirect to login page route
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      console.log('User signed out successfully');
+      // Navigation back to '/' will happen automatically via AuthContext listener
+    } catch (error) {
+      console.error('Error signing out: ', error);
+    }
   };
 
   // TODO: Migrate sidebar styles from app.html/style.css here or to a separate CSS module

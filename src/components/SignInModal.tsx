@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from "firebase/auth"; // <-- Import Firebase function
+import { auth } from '../firebaseConfig'; // <-- Import auth object
 
 // TODO: Import actual icons
 const googleLogo = '[G]';
@@ -12,17 +14,33 @@ interface SignInModalProps {
 }
 
 const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
-  const [identifier, setIdentifier] = useState(''); // For phone, email, or username
+  // State for combined Email/Password login (simplification for now)
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState<string | null>(null);
 
   // Placeholder handlers
   const handleGoogleSignIn = () => console.log('Google Sign In');
   const handleAppleSignIn = () => console.log('Apple Sign In');
-  const handleNext = (event: React.FormEvent) => {
+  
+  // Combined Sign In handler
+  const handleSignIn = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Next clicked with identifier:', identifier);
-    // TODO: Implement logic to check identifier and potentially ask for password
-    alert('Sign In Step 1 (Next) not fully implemented.');
+    setError(null);
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      // Sign-in successful.
+      console.log('Sign In Successful');
+      onClose(); // Close the modal on successful sign-in
+      // Navigation to /app will happen automatically via AuthContext listener
+    } catch (err) {
+      console.error("Sign In Error:", err);
+      setError("Invalid email or password. Please try again."); // Generic error for sign-in
+      // You could add more specific error checks here if needed (e.g., 'auth/user-not-found', 'auth/wrong-password')
+    }
   };
+  
   const handleForgotPassword = () => console.log('Forgot Password');
 
   if (!isOpen) {
@@ -45,19 +63,28 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
 
         <div className="divider"><span>or</span></div>
 
-        <form onSubmit={handleNext}>
+        <form onSubmit={handleSignIn}>
           <div className="form-group">
-            {/* No label shown in screenshot */}
             <input
-              type="text"
-              placeholder="Phone, email, or username"
-              value={identifier}
-              onChange={(e) => setIdentifier(e.target.value)}
+              type="email" // Changed type to email
+              placeholder="Email" // Updated placeholder
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
-          <button type="submit" className="next-btn">
-            Next
+           <div className="form-group">
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+          {error && <p className="error-message">{error}</p>} {/* Display error */} 
+          <button type="submit" className="next-btn"> {/* Keep class, text changed */} 
+            Sign In
           </button>
         </form>
 
