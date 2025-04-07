@@ -216,6 +216,14 @@
   text-align: center;
 }
 
+.error-message {
+    color: #dc3545; /* Standard Bootstrap danger color */
+    font-size: 0.875em;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
 /* === End Sign Up Page Styles === */
 
 /* Modal Styles (Keep for later use) */

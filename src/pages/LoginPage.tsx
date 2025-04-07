@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import SignInModal from '../components/SignInModal';
+import { useAuth } from '../context/AuthContext';
 
 // TODO: Import modal components later
 
@@ -10,6 +11,14 @@ const appleLogo = '[A]';
 
 const LoginPage: React.FC = () => {
   const [isSignInModalOpen, setIsSignInModalOpen] = useState(false);
+  const { currentUser, loading } = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!loading && currentUser) {
+      navigate('/app');
+    }
+  }, [currentUser, loading, navigate]);
 
   // Placeholder handlers - Implement actual logic later
   const handleGoogleSignup = () => console.log('Google Sign up clicked'); // Keep this type of handler
@@ -18,6 +27,10 @@ const LoginPage: React.FC = () => {
   // Modal control functions
   const openSignInModal = () => setIsSignInModalOpen(true);
   const closeSignInModal = () => setIsSignInModalOpen(false);
+
+  if (loading || currentUser) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="login-container"> {/* Use class from CSS */} 

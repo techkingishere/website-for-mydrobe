@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from '../firebaseConfig';
+import { useAuth } from '../context/AuthContext';
 
 // TODO: Define form field interfaces if needed
 
@@ -7,13 +10,53 @@ const SignUpPage: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState(''); // Example field
+  const [error, setError] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { currentUser, loading } = useAuth();
 
-  const handleSubmit = (event: React.FormEvent) => {
+  useEffect(() => {
+    if (!loading && currentUser) {
+      navigate('/app');
+    }
+  }, [currentUser, loading, navigate]);
+
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    console.log('Sign Up Submitted:', { email, password, username });
-    // TODO: Implement actual sign-up logic (API call, validation, etc.)
-    alert('Sign Up functionality not yet implemented.');
+    setError(null);
+    console.log('Attempting Sign Up:', { email, username });
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      console.log('Sign Up Successful:', userCredential.user);
+      // TODO: Optionally set user profile display name with username here
+      navigate('/app');
+    } catch (err) {
+      // Handle Errors here.
+      console.error("Sign Up Error:", err);
+      // Type checking for error object
+      if (err instanceof Error && 'code' in err && typeof err.code === 'string') {
+        const errorCode = err.code;
+        const errorMessage = err.message;
+        // Provide user-friendly error messages
+        if (errorCode === 'auth/email-already-in-use') {
+          setError('This email address is already in use.');
+        } else if (errorCode === 'auth/weak-password') {
+          setError('Password should be at least 6 characters.');
+        } else {
+          setError('Failed to create account. Please try again.');
+        }
+        console.error(errorCode, errorMessage);
+      } else {
+        // Handle cases where the error is not in the expected format
+        setError('An unexpected error occurred. Please try again.');
+        console.error("Unexpected error format:", err);
+      }
+    }
   };
+
+  if (loading || currentUser) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="signup-container"> {/* Reuse or create styles */}
@@ -50,10 +93,11 @@ const SignUpPage: React.FC = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              aria-describedby="passwordHelp"
             />
-            {/* TODO: Add password requirements hint */}
+            <small id="passwordHelp" className="form-text text-muted">Password should be at least 6 characters.</small>
           </div>
-          {/* TODO: Add Date of Birth, etc. if needed */}
+          {error && <p className="error-message">{error}</p>}
           <button type="submit" className="submit-btn">
             Sign Up
           </button>
