@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate, Link } from 'react-router-dom';
+import type { JSX } from 'react';
 import LoginPage from './pages/LoginPage';
 import AppLayout from './layouts/AppLayout';
 import HomePage from './pages/HomePage';
