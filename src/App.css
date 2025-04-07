@@ -15,125 +15,147 @@
 .login-container { /* Apply this class to the root div in LoginPage.tsx */
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: center; /* Center vertically */
+    align-items: flex-start; /* Align items to the start (left) */
     min-height: 100vh;
-    text-align: center;
-    padding: 2rem;
+    text-align: left; /* Change default text align */
+    padding: 2rem 5%; /* Add some horizontal padding */
+    max-width: 500px; /* Max width for the content */
+    margin: 0 auto; /* Center the container itself */
 }
 
 .login-container header h1 {
-    font-size: 3rem;
+    font-size: 2.5rem; /* Slightly smaller */
     font-weight: bold;
-    margin-bottom: 0.5em;
+    margin-bottom: 0.25em;
 }
 
 .login-container header p {
-    font-size: 1.5rem;
+    font-size: 1.2rem; /* Smaller subtitle */
     margin-bottom: 2em;
+    color: #aaa; /* Subdued color */
 }
 
 .login-container main h2 {
-    font-size: 2rem;
+    font-size: 1.8rem; /* Smaller heading */
     font-weight: bold;
     margin-bottom: 1em;
 }
 
-/* General Button Style (override default button if needed) */
+/* General Button Style */
 .login-container button {
     display: block;
     width: 100%;
-    max-width: 350px; /* Limit width */
-    padding: 1em;
+    /* max-width: 350px; /* Remove max-width, let container handle it */
+    padding: 0.8em 1em; /* Adjust padding */
     margin-bottom: 1em;
-    border: none;
-    border-radius: 25px;
+    border: 1px solid #333; /* Add subtle border for light buttons */
+    border-radius: 30px; /* More rounded */
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    margin-left: auto; /* Center buttons */
-    margin-right: auto;
+    /* Remove auto margins, handled by container */
 }
 
 .social-signup {
     background-color: #fff;
     color: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* Inherits button styles */
+    border: 1px solid #fff; /* White border for white buttons */
+    /* display: flex; /* Keep flex if using icons */
+    /* align-items: center; */
+    /* justify-content: center; */
 }
 
-.social-signup img {
-    height: 1.5em; /* Adjust as needed */
-    margin-right: 0.5em;
-    /* TODO: Replace placeholder SVGs */
-}
+/* .social-signup img { ... Keep if using logos ...} */
 
 .divider {
     margin: 1.5em 0;
     position: relative;
+    text-align: center; /* Center the 'or' text */
     color: #aaa;
     width: 100%;
-    max-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
+    /* max-width: 350px; /* Remove max-width */
 }
 
-.divider::before,
-.divider::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    width: 40%;
-    height: 1px;
-    background-color: #333;
+.divider span {
+    background-color: #000; /* Match page background */
+    padding: 0 10px;
+    position: relative;
+    z-index: 1;
 }
 
 .divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
     left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #333; /* Line color */
+    z-index: 0;
 }
 
-.divider::after {
-    right: 0;
-}
+/* Remove ::after as ::before spans full width */
+/* .divider::after { ... } */
 
 .create-account {
-    background-color: #1DA1F2; /* X Blue */
+    background-color: #0095F6; /* Instagram-like Blue */
     color: #fff;
-    /* Inherits button styles */
+    border: none; /* No border for solid color button */
 }
 
 .terms {
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* Smaller text */
     color: #aaa;
-    margin-top: 1em;
-    margin-bottom: 3em;
+    margin-top: 0.5em; /* Less space above */
+    margin-bottom: 2em; /* Space below */
+    text-align: center;
 }
 
 .terms a {
-    color: #1DA1F2;
+    color: #ccc; /* Lighter link color on black */
     text-decoration: none;
 }
 
+.terms a:hover {
+    text-decoration: underline;
+}
+
 .login-container footer {
-     margin-top: 2rem;
+     margin-top: auto; /* Push footer towards bottom if container isn't full height */
+     padding-top: 1rem;
+     width: 100%;
+     text-align: center;
 }
 
 .login-container footer p {
-    font-size: 1.1rem;
+    font-size: 1rem;
     margin-bottom: 0.5em;
 }
 
-.sign-in {
-    background-color: transparent;
-    color: #1DA1F2;
-    border: 1px solid #38444d;
-    /* Inherits button styles */
+.sign-in-link { /* Style for the Link component */
+    color: #0095F6; /* Instagram-like Blue */
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
 }
 
-/* Modal Styles (Will need to be adapted to React Modal components later) */
+.sign-in-link:hover {
+    text-decoration: underline;
+}
+
+/* Remove old sign-in button style if not used elsewhere */
+/* .sign-in { ... } */
+
+/* === End Login/Signup Page Styles === */
+
+
+/* Modal Styles (Keep for later use) */
 .modal-overlay {
     position: fixed;
     top: 0;

@@ -1,20 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link
 // TODO: Import modal components later
 
-// Placeholder data for logos (replace with actual imports/SVGs later)
+// TODO: Import actual icons later
 const googleLogo = '[G]';
 const appleLogo = '[A]';
 
 const LoginPage: React.FC = () => {
   
-  const handleSimulatedLogin = () => {
-    localStorage.setItem('isLoggedIn', 'true');
-    window.location.href = '/app'; 
-  };
-  
-  // TODO: Implement modal opening/closing state and logic
-  const openCreateAccountModal = () => alert('Open Create Account Modal (Not implemented)');
-  const openSignInModal = () => alert('Open Sign In Modal (Not implemented)');
+  // Placeholder handlers - Implement actual logic later
+  const handleGoogleSignup = () => console.log('Google Sign up clicked');
+  const handleAppleSignup = () => console.log('Apple Sign up clicked');
+  const handleCreateAccount = () => console.log('Create Account clicked');
+  // No handler needed for the Sign in Link component
 
   return (
     <div className="login-container"> {/* Use class from CSS */} 
@@ -24,19 +22,26 @@ const LoginPage: React.FC = () => {
         </header>
         <main>
             <h2>Join now</h2>
-            <button className="social-signup google" onClick={handleSimulatedLogin}>
+            <button className="social-signup google" onClick={handleGoogleSignup}>
                 {googleLogo} Sign up with Google
             </button>
-            <button className="social-signup apple" onClick={handleSimulatedLogin}>
+            <button className="social-signup apple" onClick={handleAppleSignup}>
                  {appleLogo} Sign up with Apple
             </button>
-            <div className="divider">or</div>
-            <button className="create-account" onClick={openCreateAccountModal}>Create account</button>
-            <p className="terms">By signing up, you agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.</p>
+            <div className="divider">
+                <span>or</span>
+            </div>
+            <button className="create-account" onClick={handleCreateAccount}>
+                Create account
+            </button>
+            <p className="terms">
+                By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
+            </p>
         </main>
         <footer>
             <p>Already have an account?</p>
-            <button className="sign-in" onClick={openSignInModal}>Sign in</button>
+            {/* Use Link for internal navigation */}
+            <Link to="/login" className="sign-in-link">Sign in</Link>
         </footer>
 
         {/* TODO: Render Sign In / Create Account Modals here based on state */}
