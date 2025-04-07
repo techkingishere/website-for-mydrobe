@@ -174,7 +174,7 @@
     text-align: center; /* Center text */
     padding: 2rem 5%;
     max-width: 500px;
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .signup-container header,
@@ -213,7 +213,7 @@
      margin-top: 2rem; /* Add some space before footer */
      padding-top: 1rem;
      width: 100%;
-     text-align: center;
+  text-align: center;
 }
 
 /* === End Sign Up Page Styles === */
