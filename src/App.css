@@ -43,19 +43,20 @@
 }
 
 /* General Button Style */
-.login-container button {
+.login-container button,
+.button-link { /* Add .button-link selector */
     display: block;
     width: 100%;
-    /* max-width: 350px; /* Remove max-width, let container handle it */
-    padding: 0.8em 1em; /* Adjust padding */
+    padding: 0.8em 1em;
     margin-bottom: 1em;
-    border: 1px solid #333; /* Add subtle border for light buttons */
-    border-radius: 30px; /* More rounded */
+    border: 1px solid #333;
+    border-radius: 30px;
     font-size: 1rem;
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    /* Remove auto margins, handled by container */
+    text-decoration: none; /* Add for links */
+    color: inherit; /* Add for links */
 }
 
 .social-signup {
@@ -154,6 +155,39 @@
 
 /* === End Login/Signup Page Styles === */
 
+/* === Sign Up Page Styles === */
+.signup-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to top */
+    align-items: flex-start;
+    min-height: 100vh;
+    text-align: left;
+    padding: 2rem 5%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.signup-container header h1 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.5em;
+}
+
+.signup-container form {
+    width: 100%;
+}
+
+/* Reuse .form-group, .submit-btn, .terms, .sign-in-link from App.css */
+
+.signup-container footer {
+     margin-top: 2rem; /* Add some space before footer */
+     padding-top: 1rem;
+     width: 100%;
+     text-align: center;
+}
+
+/* === End Sign Up Page Styles === */
 
 /* Modal Styles (Keep for later use) */
 .modal-overlay {

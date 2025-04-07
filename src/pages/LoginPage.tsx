@@ -11,7 +11,6 @@ const LoginPage: React.FC = () => {
   // Placeholder handlers - Implement actual logic later
   const handleGoogleSignup = () => console.log('Google Sign up clicked');
   const handleAppleSignup = () => console.log('Apple Sign up clicked');
-  const handleCreateAccount = () => console.log('Create Account clicked');
   // No handler needed for the Sign in Link component
 
   return (
@@ -31,9 +30,9 @@ const LoginPage: React.FC = () => {
             <div className="divider">
                 <span>or</span>
             </div>
-            <button className="create-account" onClick={handleCreateAccount}>
+            <Link to="/signup" className="create-account button-link">
                 Create account
-            </button>
+            </Link>
             <p className="terms">
                 By signing up, you agree to the <a href="/terms">Terms of Service</a> and <a href="/privacy">Privacy Policy</a>.
             </p>
