@@ -1,0 +1,728 @@
+/* Styles copied from original style.css - Needs Refactoring */
+
+/* Basic Reset - Keep this */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global body styles for the React app (from index.css essentially) */
+/* body is handled by index.css */
+
+/* === Login/Signup Page Styles === */
+
+.login-container { /* Apply this class to the root div in LoginPage.tsx */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 2rem;
+}
+
+.login-container header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.login-container header p {
+    font-size: 1.5rem;
+    margin-bottom: 2em;
+}
+
+.login-container main h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+/* General Button Style (override default button if needed) */
+.login-container button {
+    display: block;
+    width: 100%;
+    max-width: 350px; /* Limit width */
+    padding: 1em;
+    margin-bottom: 1em;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-left: auto; /* Center buttons */
+    margin-right: auto;
+}
+
+.social-signup {
+    background-color: #fff;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Inherits button styles */
+}
+
+.social-signup img {
+    height: 1.5em; /* Adjust as needed */
+    margin-right: 0.5em;
+    /* TODO: Replace placeholder SVGs */
+}
+
+.divider {
+    margin: 1.5em 0;
+    position: relative;
+    color: #aaa;
+    width: 100%;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 1px;
+    background-color: #333;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.create-account {
+    background-color: #1DA1F2; /* X Blue */
+    color: #fff;
+    /* Inherits button styles */
+}
+
+.terms {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 1em;
+    margin-bottom: 3em;
+}
+
+.terms a {
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+.login-container footer {
+     margin-top: 2rem;
+}
+
+.login-container footer p {
+    font-size: 1.1rem;
+    margin-bottom: 0.5em;
+}
+
+.sign-in {
+    background-color: transparent;
+    color: #1DA1F2;
+    border: 1px solid #38444d;
+    /* Inherits button styles */
+}
+
+/* Modal Styles (Will need to be adapted to React Modal components later) */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(91, 112, 131, 0.4); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-content {
+    background-color: #000;
+    padding: 2rem;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 600px; 
+    position: relative;
+    max-height: 90vh;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.close-modal-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+    padding: 0.5rem;
+    line-height: 1;
+    width: auto; 
+    margin: 0;
+}
+
+.modal-content h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="date"],
+.form-group input[type="password"] {
+    width: 100%;
+    padding: 1rem;
+    background-color: #000;
+    border: 1px solid #38444d;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #1DA1F2;
+}
+
+.input-hint {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 0.5rem;
+}
+
+.submit-btn {
+     background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    margin-top: 1.5rem;
+    /* Inherits button styles? Check needed */
+    border-radius: 25px;
+    padding: 1em;
+    font-size: 1rem;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Sign-in Modal Specific */
+#sign-in-modal .modal-content {}
+#sign-in-modal .modal-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 1.5em;
+}
+#sign-in-modal .social-signup { margin-bottom: 1em; }
+#sign-in-modal .divider { margin: 1.5em 0; }
+#sign-in-modal .form-group input[type="text"] { padding: 1.2em 1em; }
+
+.next-btn {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    margin-top: 1em;
+    border-radius: 25px;
+    padding: 1em;
+    font-size: 1rem;
+}
+
+.forgot-password-btn {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #536471;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border-radius: 25px;
+    padding: 1em;
+    font-size: 1rem;
+}
+
+.signup-prompt {
+    color: #71767b;
+    font-size: 0.9rem;
+    text-align: left; /* Keep left aligned */
+    max-width: 600px; /* Match modal width? */
+    margin: 0 auto; /* Center block */
+}
+
+.signup-prompt a.open-signup-link {
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+.signup-prompt a.open-signup-link:hover { text-decoration: underline; }
+
+/* === App Layout Styles === */
+
+/* Body style handled by index.css */
+
+.sidebar {
+    width: 240px; 
+    background-color: #000; 
+    padding: 1.5rem 1rem;
+    border-right: 1px solid #38444d; 
+    display: flex;
+    flex-direction: column;
+    position: fixed; 
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+}
+.main-content {
+    flex-grow: 1; 
+    padding: 1.5rem;
+    margin-left: 240px; 
+    overflow-y: auto;
+}
+
+.sidebar-logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #fff;
+}
+.sidebar-search {
+    display: flex;
+    align-items: center; 
+    background-color: #222;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1.5rem;
+}
+.sidebar-search input {
+    background: none;
+    border: none;
+    color: #fff;
+    outline: none;
+    flex-grow: 1;
+    margin-left: 0.5rem;
+    font-size: 1rem;
+}
+ .sidebar-search span { color: #aaa; }
+
+.sidebar-nav a.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 0.5rem;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+    background: none;
+    border: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+}
+.sidebar-nav a.nav-link:hover {
+    background-color: #222;
+}
+.sidebar-nav a.nav-link.active { /* Need JS to add this class */
+    background-color: #333;
+    font-weight: bold;
+}
+ .sidebar-nav a.nav-link span.icon {
+    margin-right: 1rem;
+    font-size: 1.3rem;
+    width: 24px;
+    display: inline-block;
+    text-align: center;
+}
+.sidebar-footer {
+    margin-top: auto; 
+    padding-top: 1rem;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+.sidebar-footer a {
+    color: #aaa;
+    text-decoration: none;
+    margin: 0 0.3rem;
+}
+ .sidebar-footer a:hover { text-decoration: underline; }
+
+ .logout-btn {
+    background: none;
+    border: 1px solid #555;
+    color: #aaa;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block; 
+    width: 100%; 
+    margin-top: 1rem; 
+    margin-bottom: 0.5rem; 
+    text-align: center;
+ }
+
+ .logout-btn:hover {
+     background-color: #222;
+     color: #fff;
+ } 
+
+/* === Marketplace Styles === */
+
+.marketplace-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; 
+    margin-bottom: 1rem;
+}
+
+.marketplace-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.marketplace-header .actions .action-btn {
+    background: #333;
+    color: #fff;
+    border: none;
+    border-radius: 50%; 
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    margin-left: 0.5rem;
+    padding: 0; 
+    display: inline-flex; 
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    /* Reset general button styles */
+    margin-bottom: 0;
+}
+
+.marketplace-filters {
+    display: flex;
+    gap: 0.5rem; 
+    margin-bottom: 1.5rem;
+}
+
+.marketplace-filters button {
+    background: #333;
+    color: #fff;
+    padding: 0.5em 1.5em;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    width: auto; 
+    margin: 0; 
+}
+
+.section-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.product-item {
+    background-color: #111; 
+    border-radius: 8px;
+    overflow: hidden; 
+    cursor: pointer;
+}
+
+.product-item img {
+    display: block;
+    width: 100%;
+    height: 150px; 
+    object-fit: cover; 
+}
+
+.product-item p {
+    padding: 0.5rem 0.75rem;
+    margin: 0;
+}
+
+.product-item .price {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.product-item .name {
+    font-size: 0.9rem;
+    color: #ccc;
+    padding-top: 0; 
+}
+
+/* === Explore Page Styles === */
+
+ .explore-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-auto-rows: minmax(150px, auto); 
+    gap: 4px; 
+ }
+
+ .explore-item {
+     background-color: #222; 
+     overflow: hidden;
+     position: relative; 
+     cursor: pointer;
+ }
+
+ .explore-item.tall { grid-row: span 2; }
+ .explore-item.wide { grid-column: span 2; }
+ .explore-item.large { grid-column: span 2; grid-row: span 2; }
+
+ .explore-item img {
+     display: block;
+     width: 100%;
+     height: 100%;
+     object-fit: cover; 
+ }
+
+ @media (max-width: 768px) {
+    .explore-grid {
+        grid-template-columns: repeat(3, 1fr); 
+        grid-auto-rows: minmax(120px, auto); 
+        gap: 2px; 
+    }
+    .explore-item.tall { grid-row: span 1; } 
+     .explore-item.wide { grid-column: span 1; }
+     .explore-item.large { grid-column: span 1; grid-row: span 1; }
+ }
+
+ /* === Messages Page Styles === */
+
+ .messages-container {}
+ .messages-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0; 
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #38444d; 
+ }
+
+ .messages-header h2 { font-size: 1.8rem; font-weight: bold; }
+
+ .messages-header .new-message-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    /* Reset general button styles */
+    margin-bottom: 0;
+ }
+
+ .chat-list {}
+ .chat-item {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0.5rem;
+    border-bottom: 1px solid #222; 
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+ }
+
+ .chat-item:hover { background-color: #111; }
+
+ .chat-item .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 1rem;
+    object-fit: cover;
+ }
+
+ .chat-preview {
+    flex-grow: 1;
+    overflow: hidden; 
+ }
+
+ .chat-preview p {
+    margin: 0;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+ }
+
+ .chat-preview .chat-name { font-weight: bold; font-size: 1rem; margin-bottom: 0.2rem; color: #fff; }
+ .chat-preview .last-message { font-size: 0.9rem; color: #aaa; }
+ .chat-item .timestamp { font-size: 0.8rem; color: #aaa; margin-left: 1rem; white-space: nowrap; }
+
+ .chat-item.active .chat-name,
+ .chat-item.active .last-message { font-weight: bold; color: #fff; }
+ .chat-item.active .last-message::before { content: "• "; color: #1DA1F2; font-weight: bold; }
+ 
+ /* === Profile Page Styles === */
+
+ .profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5rem;
+ }
+
+ .profile-avatar {
+    width: 150px; 
+    height: 150px;
+    border-radius: 50%;
+    margin-right: 3rem; 
+    object-fit: cover;
+    flex-shrink: 0; 
+ }
+
+ .profile-info { flex-grow: 1; }
+ .profile-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+ }
+
+ .profile-title .username { font-size: 1.8rem; font-weight: 300; margin-right: 1.5rem; }
+
+ .profile-action-btn {
+    background-color: #333; 
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    cursor: pointer;
+    margin-right: 0.8rem;
+    width: auto; 
+    margin-bottom: 0; 
+ }
+
+ .profile-action-btn.icon-btn { background: none; font-size: 1.5rem; padding: 0; width: auto; margin-right: 0; }
+
+ .profile-stats { display: flex; margin-bottom: 1.5rem; }
+ .profile-stats span { margin-right: 2.5rem; font-size: 1rem; }
+ .profile-stats span strong { font-weight: bold; }
+ .profile-bio .name { font-weight: bold; margin-bottom: 0.3rem; }
+ .profile-bio p { margin: 0; margin-bottom: 0.3rem; line-height: 1.4; }
+ .profile-bio a { color: #1DA1F2; text-decoration: none; font-weight: bold; }
+
+ .profile-highlights {
+    display: flex;
+    margin-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #38444d;
+ }
+
+ .highlight-item { text-align: center; margin-right: 1.5rem; cursor: pointer; }
+ .highlight-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 1px solid #555; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    overflow: hidden; 
+ }
+
+ .highlight-circle img { width: 100%; height: 100%; object-fit: cover; }
+ .highlight-circle.add-highlight { font-size: 2rem; color: #777; }
+ .highlight-name { font-size: 0.8rem; }
+
+ .profile-content-tabs {
+    display: flex;
+    justify-content: center; 
+    border-top: 1px solid #38444d;
+    margin-bottom: 1rem; 
+ }
+
+ .profile-content-tabs .tab-item {
+    background: none;
+    border: none;
+    color: #aaa;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-top: 1px solid transparent; 
+    margin-top: -1px; 
+    width: auto;
+    margin-bottom: 0;
+ }
+
+ .profile-content-tabs .tab-item.active { color: #fff; border-top: 1px solid #fff; }
+ .profile-content-tabs .tab-item .icon { margin-right: 0.5rem; }
+
+ .profile-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+ }
+ 
+ /* === Floating Action Button (FAB) Styles === */
+.fab {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #1DA1F2; 
+    color: #fff;
+    border: none;
+    border-radius: 50%; 
+    width: 60px;
+    height: 60px;
+    font-size: 1.8rem; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
+    cursor: pointer;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    z-index: 1010; 
+    padding: 0;
+    margin: 0;
+    width: 60px; 
+}
+
+.fab:hover {
+    background-color: #1a91da; 
+} 
+
+/* Placeholder for Google/Apple logos in React */
+/* We might need actual SVG components or img tags later */
