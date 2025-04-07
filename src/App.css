@@ -12,16 +12,22 @@
 
 /* === Login/Signup Page Styles === */
 
-.login-container { /* Apply this class to the root div in LoginPage.tsx */
+.login-container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center vertically */
-    align-items: flex-start; /* Align items to the start (left) */
+    justify-content: center; /* Keep centering container content vertically */
+    align-items: center; /* Center items horizontally */
     min-height: 100vh;
-    text-align: left; /* Change default text align */
-    padding: 2rem 5%; /* Add some horizontal padding */
-    max-width: 500px; /* Max width for the content */
-    margin: 0 auto; /* Center the container itself */
+    text-align: center; /* Center text */
+    padding: 2rem 5%;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.login-container header,
+.login-container main,
+.login-container footer {
+    width: 100%; /* Ensure sections take full width for centering */
 }
 
 .login-container header h1 {
@@ -44,9 +50,12 @@
 
 /* General Button Style */
 .login-container button,
-.button-link { /* Add .button-link selector */
+.button-link {
     display: block;
     width: 100%;
+    max-width: 350px; /* Re-add max-width for buttons */
+    margin-left: auto; /* Center buttons within their container */
+    margin-right: auto;
     padding: 0.8em 1em;
     margin-bottom: 1em;
     border: 1px solid #333;
@@ -55,8 +64,8 @@
     font-weight: bold;
     cursor: pointer;
     text-align: center;
-    text-decoration: none; /* Add for links */
-    color: inherit; /* Add for links */
+    text-decoration: none;
+    color: inherit;
 }
 
 .social-signup {
@@ -159,26 +168,46 @@
 .signup-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Align content to top */
-    align-items: flex-start;
+    justify-content: flex-start; /* Align container content to top */
+    align-items: center; /* Center items horizontally */
     min-height: 100vh;
-    text-align: left;
+    text-align: center; /* Center text */
     padding: 2rem 5%;
     max-width: 500px;
     margin: 0 auto;
+}
+
+.signup-container header,
+.signup-container main,
+.signup-container footer {
+    width: 100%; /* Ensure sections take full width */
 }
 
 .signup-container header h1 {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 1.5em;
+    text-align: center; /* Ensure header text is centered */
 }
 
 .signup-container form {
     width: 100%;
+    max-width: 350px; /* Limit form width */
+    margin: 0 auto; /* Center form */
+}
+
+.signup-container .form-group label {
+    text-align: left; /* Keep labels left-aligned */
 }
 
 /* Reuse .form-group, .submit-btn, .terms, .sign-in-link from App.css */
+/* Ensure these shared styles work well with centered layout */
+
+.signup-container .submit-btn {
+    /* Add auto margins if not inheriting */
+    margin-left: auto;
+    margin-right: auto;
+}
 
 .signup-container footer {
      margin-top: 2rem; /* Add some space before footer */
@@ -218,16 +247,16 @@
 
 .close-modal-btn {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 15px; /* Adjust position */
+    left: 15px; /* Adjust position */
     background: none;
     border: none;
-    font-size: 1.8rem;
+    font-size: 1.5rem; /* Adjust size */
     color: #fff;
     cursor: pointer;
-    padding: 0.5rem;
+    padding: 0;
     line-height: 1;
-    width: auto; 
+    width: auto;
     margin: 0;
 }
 
@@ -782,3 +811,90 @@
 
 /* Placeholder for Google/Apple logos in React */
 /* We might need actual SVG components or img tags later */
+
+/* Sign-in Modal Specific Styles */
+.sign-in-modal-content {
+    /* Inherits .modal-content defaults */
+    max-width: 500px; /* Adjust max width if needed */
+    text-align: center; /* Center align text inside modal */
+}
+
+.sign-in-modal-content .modal-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 0.5em; /* Add space above if logo is removed */
+    margin-bottom: 1.5em;
+}
+
+/* Reuse .social-signup */
+.sign-in-modal-content .social-signup {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px; /* Limit width of social buttons */
+}
+
+/* Reuse .divider */
+.sign-in-modal-content .divider {
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reuse .form-group */
+.sign-in-modal-content .form-group input[type="text"] {
+    padding: 1.2em 1em;
+    max-width: 300px; /* Limit width */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left; /* Keep placeholder text left-aligned */
+}
+
+/* Reuse .next-btn */
+.sign-in-modal-content .next-btn {
+    background-color: #fff;
+    color: #000;
+    font-weight: bold;
+    margin-top: 1em;
+    border-radius: 25px;
+    padding: 0.8em; /* Adjust padding */
+    font-size: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reuse .forgot-password-btn */
+.sign-in-modal-content .forgot-password-btn {
+    background-color: transparent;
+    color: #fff;
+    border: 1px solid #536471;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    border-radius: 25px;
+    padding: 0.8em; /* Adjust padding */
+    font-size: 1rem;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Reuse .signup-prompt */
+.sign-in-modal-content .signup-prompt {
+    color: #71767b;
+    font-size: 0.9rem;
+    text-align: center; /* Center prompt text */
+    max-width: 300px; /* Match width */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.sign-in-modal-content .signup-prompt a { /* Already styled as sign-in-link basically */
+    color: #1DA1F2;
+    text-decoration: none;
+}
+
+.sign-in-modal-content .signup-prompt a:hover {
+     text-decoration: underline;
+}
