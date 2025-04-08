@@ -1,0 +1,43 @@
+html {
+  overflow-y: scroll; /* Force scrollbar always */
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #000000; /* Ensure default background is black */
+  color: #ffffff; /* Default text color */
+  height: 100%;
+}
+
+#root {
+  height: 100%;
+  display: flex; /* Often helpful for root element */
+  flex-direction: column; /* Often helpful for root element */
+}
+
+/* Ensure box-sizing is inherited */
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+/* Remove existing body.in-app-view { overflow: hidden; } if present */
+/* body.in-app-view { 
+   overflow: hidden; 
+} */
+
+/* Other existing styles below */ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
