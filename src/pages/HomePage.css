@@ -1,0 +1,71 @@
+.homepage-container {
+  padding: 5px 20px; /* Reduced top/bottom padding */
+  display: flex; /* Added */
+  flex-direction: column; /* Added */
+  flex-grow: 1; /* Make homepage fill main-content */
+  width: 100%; /* Ensure it uses full width */
+  box-sizing: border-box; /* Include padding */
+  /* min-height: 100%; Removed */
+}
+
+/* Container for the dynamic content area */
+.products-area {
+  flex-grow: 1; /* Allow this area to take up remaining vertical space */
+  display: flex; /* Use flex to manage its children */
+  flex-direction: column; /* Stack children vertically */
+}
+
+/* Ensure grid and messages fill the products-area */
+.product-grid,
+.no-products-message,
+.loading-indicator { /* Apply to loading indicator too if it's the only thing shown */
+  width: 100%; /* Ensure they take full width */
+}
+
+/* Optional Header Styles (add later if needed) */
+/* .marketplace-header { ... } */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(5, calc((100% - 300px) / 5)); /* Keep column calculation */
+  /* grid-auto-rows: auto; */ 
+  row-gap: 58px; /* Reduced vertical gap */
+  column-gap: 75px; /* Keep horizontal gap */
+  padding-top: 15px; /* Keep reduced top padding */
+}
+
+/* Media queries removed */
+
+/* Remove extra closing brace below */
+
+/* Style for the 'No products found' message */
+.no-products-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-height: 300px; Removed minimum height */
+  color: #888; /* Grey text */
+  font-size: 1.2rem;
+  padding: 40px;
+  text-align: center;
+  flex-grow: 1; /* Make message fill available space */
+  width: 100%; /* Ensure full width */
+}
+
+/* Styles for loading indicators */
+.loading-indicator {
+  text-align: center;
+  padding: 40px;
+  color: #888;
+  /* width: 100%; Already covered above */
+  flex-grow: 1; /* Make loading indicator fill space too */
+  display: flex; /* Added for alignment */
+  justify-content: center; /* Added for alignment */
+  align-items: center; /* Added for alignment */
+}
+
+.bottom-loader {
+  flex-grow: 0 !important; /* Explicitly prevent bottom loader from growing */
+  padding: 20px;
+  min-height: 60px; /* Give it some space at the bottom */
+} 

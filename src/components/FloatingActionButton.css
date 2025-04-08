@@ -1,0 +1,41 @@
+.fab {
+  position: fixed; /* Float above everything */
+  bottom: 25px;    /* Adjust spacing from bottom */
+  right: 25px;     /* Adjust spacing from right */
+  width: 56px;     /* Standard FAB size */
+  height: 56px;
+  background-color: #1d9bf0; /* Twitter Blue */
+  color: white;
+  border: none;
+  border-radius: 50%; /* Make it circular */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Add shadow */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  z-index: 999; /* Ensure it's above most other elements */
+}
+
+.fab svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+}
+
+.fab:hover {
+  background-color: #1a8cd8; /* Slightly darker blue on hover */
+  transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+.fab:active {
+  transform: scale(0.98); /* Slight shrink effect on click */
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

@@ -1,0 +1,275 @@
+.profile-container {
+  color: #f5f5f5; /* Light text color */
+  max-width: 975px; /* Instagram's max content width */
+  margin: 0 auto; /* Center the content */
+  padding: 30px 20px 0; /* Padding around content */
+}
+
+/* Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 44px; /* Space below header */
+}
+
+.profile-avatar-container {
+  margin-right: 60px; /* Space between avatar and info */
+  flex-shrink: 0;
+}
+
+.profile-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-info {
+  flex-grow: 1;
+}
+
+.profile-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-username {
+  font-size: 1.75rem; /* Larger username */
+  font-weight: 300; /* Lighter weight */
+  margin: 0;
+  margin-right: 20px;
+  color: #f5f5f5;
+}
+
+.profile-actions {
+  display: flex;
+  align-items: center;
+}
+
+.profile-action-btn {
+  background-color: #363636; /* Dark grey button */
+  color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  padding: 7px 16px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  margin-right: 8px;
+  line-height: 1.2;
+}
+
+.profile-action-btn.edit-btn {
+    background-color: #262626; /* Slightly darker for main action */
+}
+
+.profile-action-btn:hover {
+  background-color: #4a4a4a;
+}
+
+.profile-action-btn.icon-btn {
+  background: none;
+  padding: 0;
+  margin-right: 0;
+  margin-left: 12px; /* Space before icon button */
+  width: 24px; /* Ensure button clickable area */
+  height: 24px;
+}
+
+.profile-action-btn.icon-btn:hover {
+  background: none;
+  opacity: 0.7;
+}
+
+.profile-action-btn.icon-btn svg {
+    fill: currentColor; /* Use text color */
+    width: 24px;
+    height: 24px;
+}
+
+.profile-stats {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.profile-stats li {
+  margin-right: 40px;
+  font-size: 1rem;
+}
+
+.profile-stats li:last-child {
+  margin-right: 0;
+}
+
+.stat-number {
+  font-weight: 600; 
+  color: #f5f5f5;
+}
+
+.profile-bio {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.profile-bio .profile-name {
+  font-weight: 600;
+  display: block; /* Name on its own line */
+  margin-bottom: 4px;
+  color: #f5f5f5;
+}
+
+.profile-bio p {
+    margin: 0;
+    margin-bottom: 4px;
+    color: #f5f5f5;
+}
+
+/* Highlights */
+.profile-highlights {
+  display: flex;
+  margin-bottom: 44px; /* Space below highlights */
+  /* Add padding/border if needed */
+}
+
+.highlight-item {
+  text-align: center;
+  margin-right: 30px; /* Space between highlights */
+  cursor: pointer;
+  max-width: 80px; /* Limit width */
+}
+
+.highlight-circle {
+  width: 77px; /* Instagram highlight size */
+  height: 77px;
+  border-radius: 50%;
+  border: 1px solid #555555; /* Dark grey border */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  overflow: hidden; 
+  background-color: #1a1a1a; /* Dark bg */
+}
+
+.highlight-circle.add-highlight {
+  font-size: 2.5rem;
+  color: #a8a8a8;
+  font-weight: 200;
+}
+
+.highlight-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.highlight-name {
+  font-size: 0.75rem;
+  color: #f5f5f5;
+  font-weight: 400;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Content Tabs */
+.profile-content-tabs {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #38444d; /* Separator line */
+}
+
+.profile-content-tabs .tab-item {
+  background: none;
+  border: none;
+  color: #a8a8a8; /* Inactive tab color */
+  padding: 1rem 1.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-top: 1px solid transparent; 
+  margin-top: -1px; 
+  display: flex;
+  align-items: center;
+}
+
+.profile-content-tabs .tab-item.active {
+  color: #f5f5f5; /* Active tab color */
+  border-top: 1px solid #f5f5f5; /* Active tab line */
+}
+
+.profile-content-tabs .tab-item svg {
+  fill: currentColor;
+  height: 12px; /* Small icons */
+  width: 12px;
+  margin-right: 6px;
+}
+
+/* Content Area */
+.profile-content-area {
+  padding: 20px 0;
+}
+
+.no-posts-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.camera-icon-container {
+    width: 62px;
+    height: 62px;
+    border: 2px solid #f5f5f5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.camera-icon-container svg {
+    width: 32px; /* Adjust icon size */
+    height: 32px;
+    fill: #f5f5f5;
+}
+
+.no-posts-placeholder h2 {
+    font-size: 1.75rem;
+    font-weight: 300;
+    color: #f5f5f5;
+    margin-bottom: 10px;
+}
+
+.no-posts-placeholder p {
+    color: #f5f5f5;
+    margin-bottom: 20px;
+}
+
+.share-first-photo-btn {
+    background: none;
+    border: none;
+    color: #0095f6; /* Blue link color */
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+/* Post Grid Styles (Add later) */
+/* .profile-posts-grid { ... } */ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

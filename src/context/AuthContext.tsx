@@ -5,9 +5,10 @@ import { auth } from '../firebaseConfig';
 interface AuthContextType {
   currentUser: User | null;
   loading: boolean;
+  isVerified: boolean;
 }
 
-const AuthContext = createContext<AuthContextType>({ currentUser: null, loading: true });
+const AuthContext = createContext<AuthContextType>({ currentUser: null, loading: true, isVerified: false });
 
 export function useAuth() {
   return useContext(AuthContext);
@@ -19,29 +20,50 @@ interface AuthProviderProps {
 
 export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true); // Start loading until auth state is confirmed
+  const [loading, setLoading] = useState(true);
+  const [isVerified, setIsVerified] = useState(false);
 
   useEffect(() => {
-    // Subscribe to Firebase auth state changes
+    console.log("AuthProvider: Subscribing to auth state changes...");
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      console.log("Auth State Changed:", user); // Log user state changes
-      setCurrentUser(user);
-      setLoading(false); // Loading finished once we get the first update
+      console.log("AuthProvider: onAuthStateChanged fired.");
+      console.log("AuthProvider: User:", user ? user.uid : null);
+      if (user) {
+        console.log("AuthProvider: User Email Verified:", user.emailVerified);
+        if (user.emailVerified) {
+          setCurrentUser(user);
+          setIsVerified(true);
+        } else {
+          setCurrentUser(user);
+          setIsVerified(false);
+        }
+      } else {
+        setCurrentUser(null);
+        setIsVerified(false);
+      }
+      console.log("AuthProvider: Setting loading to false.");
+      setLoading(false);
     });
 
-    // Unsubscribe when the component unmounts
-    return unsubscribe;
-  }, []); // Empty dependency array means this runs once on mount
+    return () => {
+        console.log("AuthProvider: Unsubscribing from auth state changes.");
+        unsubscribe();
+    }
+  }, []);
 
   const value = {
     currentUser,
     loading,
+    isVerified
   };
 
-  // Don't render children until loading is false to prevent flicker
+  console.log("AuthProvider: Rendering - Loading:", loading, "User:", currentUser ? currentUser.uid : null, "Verified:", isVerified);
+
   return (
     <AuthContext.Provider value={value}>
-      {!loading && children}
+      {/* Temporarily render children even while loading to see if that helps debug */}
+      {/* {!loading && children} */}
+      {children} 
     </AuthContext.Provider>
   );
 }; 

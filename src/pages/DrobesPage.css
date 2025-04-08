@@ -1,0 +1,235 @@
+/* General Page Styling */
+.drobes-page {
+  padding: 20px;
+  background-color: #000; /* Black background */
+  color: #e0e0e0; /* Light grey text */
+  min-height: calc(100vh - 60px); /* Adjust based on header/footer height */
+  box-sizing: border-box;
+  /* position: relative; Keep if needed for other elements */
+}
+
+/* New Header Layout */
+.drobes-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 15px; /* Space between search and buttons */
+}
+
+/* Search Bar */
+.drobes-search-bar {
+  flex-grow: 1; /* Allow search bar to take available space */
+  display: flex;
+  align-items: center;
+  background-color: #262626; /* Dark grey background */
+  padding: 10px 15px;
+  border-radius: 25px; /* Rounded corners */
+  /* margin-bottom: 30px; Removed, handled by header */
+}
+
+.drobes-search-bar svg {
+  margin-right: 10px;
+  color: #a8a8a8; /* Grey icon color */
+}
+
+.drobes-search-bar input {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  color: #e0e0e0;
+  font-size: 1rem;
+  outline: none;
+}
+
+.drobes-search-bar input::placeholder {
+  color: #a8a8a8;
+}
+
+/* Drobes Grid */
+.drobes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columns */
+  gap: 20px;
+}
+
+/* Drobe Item Card */
+.drobe-item {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer; /* Indicate interactivity */
+  position: relative; /* Needed for absolute positioning of delete button */
+}
+
+/* Delete Button for Drobe Item */
+.drobe-delete-btn {
+  position: absolute;
+  top: -8px; /* Position slightly outside the top-right */
+  right: -8px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #ff3b30; /* Red color like reference */
+  border: 2px solid #000; /* Add border to separate from background */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10; /* Ensure it's above the image preview */
+  padding: 0;
+  transition: transform 0.1s ease;
+}
+
+.drobe-delete-btn:hover {
+  transform: scale(1.1);
+}
+
+.drobe-delete-btn svg {
+  /* Icon size is set in component */
+}
+
+/* Optional: Style the header minus button when active */
+.drobe-action-btn.filter-btn.active {
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black icon color for contrast */
+}
+
+/* Image Preview Area */
+.drobe-image-preview {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Maintain overall square shape for the preview area */
+  background-color: #2d2d2d; /* Slightly darker background for the preview */
+  border-radius: 8px; /* Match item rounding */
+  overflow: hidden; /* Ensure content stays within bounds */
+  display: grid; /* Use grid for the new layout */
+  grid-template-columns: 1fr 1fr; /* Change to equal width columns */
+  grid-template-rows: 1fr 1fr;    /* Two equal rows */
+  gap: 2px; /* Thin gap acting as the gray line */
+  padding: 2px; /* Padding to make the gap visible around edges */
+  box-sizing: border-box; 
+}
+
+/* Style for the placeholder divs */
+.drobe-image-placeholder {
+  background-color: #3a3a3a; /* Placeholder background */
+  /* border: 1px solid #555; /* Optional: if gap isn't enough */ 
+  border-radius: 4px; /* Slightly rounded corners for placeholders */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Add styles for actual images later */
+}
+
+/* Specific placeholder styles for the new layout */
+.drobe-image-placeholder.rect-left {
+  grid-column: 1 / 2; /* Span first column */
+  grid-row: 1 / 3;    /* Span both rows */
+}
+
+.drobe-image-placeholder.square-top-right {
+  grid-column: 2 / 3; /* Second column */
+  grid-row: 1 / 2;    /* First row */
+}
+
+.drobe-image-placeholder.square-bottom-right {
+  grid-column: 2 / 3; /* Second column */
+  grid-row: 2 / 3;    /* Second row */
+}
+
+/* Remove old layout styles if they exist */
+/* .drobe-image-layout.layout-1, .layout-2, .layout-3, .layout-4 { ... } */
+
+.drobe-image-preview.empty {
+   /* Keep styles for a completely empty state if needed, */
+   /* but the new layout always shows placeholders */
+   background-color: #2d2d2d; /* Ensure background shows */
+}
+
+/* Drobe Info Text */
+.drobe-info {
+  text-align: left;
+}
+
+.drobe-info h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #f5f5f5; /* Brighter white for title */
+}
+
+.drobe-info p {
+  font-size: 0.9rem;
+  color: #a8a8a8; /* Grey for subtitle */
+  margin: 0;
+}
+
+/* Placeholder for when no drobes exist */
+.no-drobes-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #a0a0a0; /* Grey text */
+  font-size: 1rem;
+  padding: 60px 20px;
+  flex-grow: 1; /* Allow it to take available space */
+  width: 100%;
+}
+
+/* Floating Action Button (FAB) */
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #0095f6; /* Blue similar to reference */
+  color: white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+
+/* New Action Buttons Container */
+.drobe-action-buttons {
+  display: flex;
+  gap: 10px; /* Space between + and - buttons */
+}
+
+/* New Action Button Styling */
+.drobe-action-btn {
+  background-color: #262626; /* Match search bar */
+  color: #e0e0e0; /* Light icon */
+  border: none;
+  border-radius: 50%;
+  width: 36px; /* Adjust size as needed */
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.drobe-action-btn:hover {
+  background-color: #3a3a3a;
+}
+
+.drobe-action-btn svg {
+  /* Size is set in the SVG component definition */
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

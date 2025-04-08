@@ -1,0 +1,75 @@
+/* Settings Page General Styling */
+.settings-page {
+  padding: 20px 15px; /* Adjust padding as needed */
+  background-color: #000; /* Black background */
+  color: #e0e0e0; /* Light grey text */
+  min-height: calc(100vh - 60px); /* Adjust based on header/footer height */
+  box-sizing: border-box;
+}
+
+/* Settings Section Styling */
+.settings-section {
+  margin-bottom: 35px; /* Space between sections */
+}
+
+.settings-section h2 {
+  font-size: 0.9rem; /* Smaller font size for section headers */
+  font-weight: 600;
+  color: #a8a8a8; /* Grey color for section headers */
+  margin-bottom: 15px; /* Space below header */
+  text-transform: none; /* Ensure no automatic uppercasing */
+  padding-left: 5px; /* Slight indent */
+}
+
+/* Settings Item Styling */
+.settings-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 5px; /* Vertical and horizontal padding */
+  margin-bottom: 5px; /* Small space between items */
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border-radius: 8px; /* Subtle rounded corners on hover/focus */
+}
+
+.settings-item:hover {
+  background-color: #1c1c1c; /* Slight background change on hover */
+}
+
+.settings-item svg {
+  margin-right: 15px; /* Space between icon and text */
+  width: 24px;
+  height: 24px;
+  color: #f5f5f5; /* White icon color */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.settings-item span {
+  font-size: 1rem;
+  color: #f5f5f5; /* White text color */
+  flex-grow: 1;
+}
+
+/* Specific style for Edit Profile item */
+.settings-item.edit-profile-item {
+  background-color: #262626; /* Darker background */
+  border-radius: 10px; /* More rounded corners */
+  padding: 15px 10px; /* Slightly more padding */
+  margin-bottom: 15px; /* More space below Edit Profile */
+}
+
+.settings-item.edit-profile-item svg {
+    color: #f5f5f5;
+}
+
+.settings-item.edit-profile-item span {
+    font-weight: 600; /* Slightly bolder text */
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

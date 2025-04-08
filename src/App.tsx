@@ -1,56 +1,67 @@
-import { Routes, Route, Navigate, Link } from 'react-router-dom';
-import type { JSX } from 'react';
-import { AuthProvider, useAuth } from './context/AuthContext';
+// import React from 'react'; // Remove unused import
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
-import SignUpPage from './pages/SignUpPage';
-import AppLayout from './layouts/AppLayout';
 import HomePage from './pages/HomePage';
-import ExplorePage from './pages/ExplorePage';
 import MessagesPage from './pages/MessagesPage';
 import ProfilePage from './pages/ProfilePage';
+import SearchPage from './pages/SearchPage';
+import DrobesPage from './pages/DrobesPage';
+import SettingsPage from './pages/SettingsPage';
+import AppLayout from './layouts/AppLayout';
+import ActionHandlerPage from './pages/ActionHandlerPage';
 import './App.css';
-import { useLocation } from 'react-router-dom';
 
-// Simple protected route component simulation
-const ProtectedRoute = ({ children }: { children: JSX.Element }) => {
-  const { currentUser, loading } = useAuth();
-  const location = useLocation();
+// Import the context and provider from the dedicated file
+import { AuthProvider, useAuth } from './context/AuthContext';
+
+// Keep ProtectedRoute definition here, but ensure it uses the imported useAuth
+const ProtectedRoute = () => {
+  const { currentUser, loading, isVerified } = useAuth(); // Uses imported useAuth
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>Loading...</div>; 
   }
 
-  if (!currentUser) {
-    return <Navigate to="/" replace state={{ from: location }} />;
+  // Redirect to landing if not logged in OR if logged in but not verified
+  if (!currentUser || !isVerified) {
+    console.log('ProtectedRoute: Redirecting - User:', currentUser ? currentUser.uid : 'null', 'Verified:', isVerified);
+    return <Navigate to="/" replace />; 
   }
 
-  return children;
+  // Render the protected component if logged in AND verified
+  return <Outlet />; 
 };
 
 function App() {
   return (
+    // Use the imported AuthProvider
     <AuthProvider>
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<LoginPage />} />
-        <Route path="/signup" element={<SignUpPage />} />
-        <Route 
-          path="/app" 
-          element={
-            <ProtectedRoute>
-              <AppLayout />
-            </ProtectedRoute>
-          }
-        >
-           {/* Nested routes within AppLayout */}
-           {/* Index route for /app */}
-          <Route index element={<HomePage />} /> 
-          <Route path="explore" element={<ExplorePage />} />
-          <Route path="messages" element={<MessagesPage />} />
-          <Route path="profile" element={<ProfilePage />} />
-           {/* Add other nested routes here if needed */}
+        {/* Add route for handling Firebase actions */}
+        <Route path="/auth/action" element={<ActionHandlerPage />} />
+        {/* Add other public routes like /signup if needed outside the modal */}
+        {/* <Route path="/signup" element={<SignUpPage />} /> */}
+
+        {/* Protected Routes - Use AppLayout */}
+        <Route element={<ProtectedRoute />}> 
+          {/* Render AppLayout for /app and its children */}
+          <Route path="/app" element={<AppLayout />}>
+            {/* HomePage is the default view inside AppLayout */}
+            <Route index element={<HomePage />} /> 
+            <Route path="search" element={<SearchPage />} />
+            <Route path="create" element={<DrobesPage />} />
+            <Route path="messages" element={<MessagesPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="settings" element={<SettingsPage />} />
+            {/* Add other routes that should use AppLayout here */}
+            {/* Example: <Route path="profile" element={<ProfilePage />} /> */}
+          </Route>
         </Route>
-        {/* Optional: Add a 404 Not Found route */}
-         <Route path="*" element={<div><h2>404 Not Found</h2><Link to="/">Go Home</Link></div>} />
+
+        {/* Catch-all or 404 route? - Placed outside protected routes */}
+        {/* <Route path="*" element={<div>404 Not Found</div>} /> */}
       </Routes>
     </AuthProvider>
   );

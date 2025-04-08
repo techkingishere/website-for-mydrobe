@@ -1,0 +1,156 @@
+.sidebar {
+  width: 240px; /* Standard sidebar width */
+  background-color: #000000; /* Black background */
+  border-right: 1px solid #262626; /* Dark border */
+  height: 100vh; /* Full viewport height */
+  position: fixed; /* Fixed position */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 0.875rem 1rem 1.5rem 1rem; /* Reduced top padding further */
+  z-index: 100; /* Ensure it's above content */
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  padding: 10px 0 1.5rem 0.5rem; /* Increased top padding by 1px */
+  font-size: 1.2rem; /* Restore font size */
+  font-weight: 300; /* Restore font weight */
+  color: #ffffff;
+  margin-bottom: 2.5rem; /* Restore margin */
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; /* Restore font if needed */
+  text-transform: uppercase; /* Restore case if needed */
+  letter-spacing: 0.15em; /* Restore spacing if needed */
+}
+
+/* Style for the logo image */
+.logo-image {
+  height: 30px; /* Keep adjusted size for now */
+  width: auto;
+  margin-right: 10px; /* Keep space between logo and text */
+}
+
+/* Added style for the logo text */
+.sidebar-logo-text {
+  margin-left: 8px; /* Keep the rightward shift for text only */
+  letter-spacing: 0.3em; /* EVEN MORE letter spacing */
+  font-family: Consolas, Monaco, 'Courier New', monospace; /* Futuristic font stack */
+  /* Ensure font weight is inherited (300 from parent) or explicitly set if needed */
+  /* font-weight: inherit; */
+}
+
+.sidebar-nav {
+  flex-grow: 1; /* Allow nav to take up available space */
+}
+
+.sidebar-nav .nav-link,
+.sidebar-footer .nav-link {
+  display: flex;
+  align-items: center;
+  padding: 0.8rem 0.5rem; /* Padding around link content */
+  margin-bottom: 0.5rem; /* Space between links */
+  color: #f5f5f5; /* Slightly off-white for inactive text */
+  text-decoration: none;
+  border-radius: 8px; /* Rounded corners */
+  transition: background-color 0.2s ease;
+  font-size: 1rem; /* Standard font size */
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; /* Standard UI font */
+  font-weight: 400; /* Normal weight for inactive */
+  background: none;
+  border: none;
+  width: 100%; /* Make button take full width like links */
+  text-align: left; /* Align text left */
+  cursor: pointer; /* Add pointer cursor */
+}
+
+.sidebar-nav .nav-link:hover,
+.sidebar-footer .nav-link:hover {
+  background-color: #1a1a1a; /* Subtle hover effect */
+}
+
+.sidebar-nav .nav-link.active,
+.sidebar-footer .nav-link.active {
+  font-weight: 600; /* Semi-bold or bold for active */
+  color: #ffffff; /* Pure white for active link */
+}
+
+.sidebar-nav .nav-link span:first-child, /* Target the icon span */
+.sidebar-footer .nav-link span:first-child {
+  margin-right: 1rem; /* Default spacing */
+  width: 24px; /* Fixed width for icon alignment */
+  height: 24px; /* Ensure icon container has height */
+  display: inline-flex; /* Use flex to center icon */
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Prevent icon shrinking */
+}
+
+/* Increased spacing for specific icons */
+.sidebar-nav .home-link span:first-child,
+.sidebar-nav .search-link span:first-child,
+.sidebar-nav .messages-link span:first-child,
+.sidebar-nav .drobes-link span:first-child { /* Added drobes-link */
+  margin-right: 1.5rem; /* Increased spacing */
+}
+
+/* Ensure SVGs within links inherit color and have consistent size/spacing */
+.sidebar-nav .nav-link svg,
+.sidebar-footer .nav-link svg {
+    height: 24px; 
+    width: 24px; 
+    margin-right: 1rem; 
+    flex-shrink: 0; 
+    /* Ensure stroke is set for outlines, fill for filled */
+    stroke: currentColor; /* Default stroke to text color */
+    stroke-width: 1.5; /* Default stroke width (can be overridden) */
+}
+
+/* Ensure filled icons HAVE fill and NO stroke (unless intended) */
+.sidebar-nav .nav-link svg path[fill]:not([fill="none"]),
+.sidebar-footer .nav-link svg path[fill]:not([fill="none"]) {
+    stroke: none;
+    fill: currentColor;
+}
+.sidebar-nav .nav-link svg circle[fill]:not([fill="none"]) {
+    stroke: none;
+    fill: currentColor;
+}
+
+
+/* Ensure outline icons HAVE stroke and NO fill */
+.sidebar-nav .nav-link svg path[fill="none"],
+.sidebar-footer .nav-link svg path[fill="none"] {
+    fill: none !important;
+    stroke: currentColor;
+}
+.sidebar-nav .nav-link svg polygon[fill="none"],
+.sidebar-footer .nav-link svg polygon[fill="none"] {
+    fill: none !important;
+    stroke: currentColor;
+}
+
+/* Adjust SVG margins for specific links */
+.sidebar-nav .home-link svg,
+.sidebar-nav .search-link svg,
+.sidebar-nav .messages-link svg,
+.sidebar-nav .drobes-link svg { /* Added drobes-link */
+  margin-right: 1.5rem; /* Increased spacing for specific SVGs */
+}
+
+.sidebar-footer {
+  margin-top: auto; /* Push footer to the bottom */
+}
+
+/* Specific styles for logout button if needed */
+.sidebar-footer .logout-btn {
+  /* Inherits .nav-link styles */
+  /* Add any specific overrides here if necessary */
+}
+
+/* Add styles for logout button or other footer items later */ 
+ 
+ 
+ 
+ 

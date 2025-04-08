@@ -20,5 +20,16 @@ body {
   align-items: center;
   min-width: 320px;
   min-height: 100vh;
-  background-color: #000000;
+  /* background-color: #000000; Remove default black */
+  background-image: url('/wardrobe_background.jpg'); /* <-- RESTORED */
+  background-size: cover; /* <-- RESTORED */
+  background-position: center; /* <-- RESTORED */
+  background-repeat: no-repeat; /* <-- RESTORED */
+  background-attachment: fixed; /* <-- RESTORED */
+}
+
+/* New rule to override body background when inside the app */
+body.in-app-view {
+  background-image: none !important;
+  background-color: #000 !important;
 }

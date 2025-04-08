@@ -1,0 +1,36 @@
+.app-container {
+  display: flex;
+  align-items: flex-start; /* Align items to the top */
+  min-height: 100vh; /* Ensure it fills viewport height */
+  background-color: #000 !important; /* Ensure solid black background, override others */
+  width: 100%; /* Ensure the flex container spans full width */
+}
+
+.main-content {
+  display: flex; /* Needed for flex children */
+  flex-direction: column; /* Stack children vertically */
+  flex-grow: 1; /* Take remaining space */
+  margin-left: 240px; /* Same as sidebar width */
+  /* padding: 1.5rem; Remove padding if MessagesPage handles it */
+  /* background-color: #ffffff; */
+  background-color: #000000 !important; /* Ensure black background */
+  color: #ffffff !important; /* Default white text */
+  /* height: 100vh; Removed fixed height */
+  position: relative; /* Create stacking context */
+  z-index: 1; /* Ensure it's layered above default body content */
+  /* overflow-y: auto; */ /* Let html handle scroll */
+  /* Removed temporary border */
+}
+
+/* Prevent body scroll when app layout is active */
+/* body.in-app-view {
+  overflow-y: hidden;
+} */
+
+/* Responsive adjustments (optional example) */
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0; /* Remove margin on smaller screens if sidebar hides */
+  }
+  /* Add styles to hide or collapse sidebar on smaller screens */
+} 

@@ -7,6 +7,22 @@
     box-sizing: border-box;
 }
 
+/* Global Styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Ensure NO global background image is set here */
+    /* background: url(...) no-repeat center center fixed; <-- REMOVE THIS IF PRESENT */
+    /* background-size: cover; <-- REMOVE THIS IF PRESENT */
+    background-color: #000000; /* Default background to black */
+    color: #ffffff; /* Default text to white */
+}
+
+/* The body background/color might be overridden by login-specific styles if needed */
+/* Login page styles should handle their own background */
+
 /* Global body styles for the React app (from index.css essentially) */
 /* body is handled by index.css */
 
@@ -15,37 +31,89 @@
 .login-container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Keep centering container content vertically */
+    justify-content: flex-start; /* Align content to top */
     align-items: center; /* Center items horizontally */
     min-height: 100vh;
+    width: 100%; /* Ensure it takes full width to show background */
     text-align: center; /* Center text */
-    padding: 2rem 5%;
-    max-width: 500px;
+    padding: 4rem 5% 2rem 5%; /* Reduced padding-top */
+    /* max-width: 500px; Remove max-width from container to allow full bg */
     margin: 0 auto;
+    /* background-color: transparent; */ /* Remove transparency */
+    position: relative; /* Added for potential z-index stacking if needed later */
+    z-index: 1; /* Ensure content is above the body background */
+    /* Apply background image ONLY here */
+    background-image: url('/wardrobe_background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+
+.login-content-wrapper { /* Add a wrapper for the centered content */
+    max-width: 500px;
+    width: 90%; /* Or original width % */
+    margin: 0 auto; /* Center the content wrapper */
+    /* Add background/padding here if needed for content contrast */
+}
+
+/* IMPORTANT: You will need to wrap the content inside LoginPage.tsx
+   with <div className="login-content-wrapper"> ... </div>
+   for the max-width and centering to apply correctly to the form elements. */
 
 .login-container header,
 .login-container main,
 .login-container footer {
     width: 100%; /* Ensure sections take full width for centering */
+    /* These should now be inside the login-content-wrapper */
+    display: flex; /* Make header a flex container */
+    flex-direction: column; /* Stack title and tagline */
+    align-items: center; /* Center title/tagline horizontally */
 }
 
-.login-container header h1 {
-    font-size: 2.5rem; /* Slightly smaller */
+/* Add margin-top to push main content down after reducing container padding */
+.login-container main {
+    margin-top: 1.7rem; /* Increased margin to push buttons down */
+}
+
+/* Specific styles for the login page header */
+.login-container .brand-title { /* Was h1 */
+    font-size: 3.64rem; /* Scaled up by 1.3x */
     font-weight: bold;
-    margin-bottom: 0.25em;
+    margin-bottom: 0.4rem; /* Reduced space below */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.1em; /* Add letter spacing */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Ensure sans-serif */
+    color: #000000; /* Pure black */
+    text-align: center; /* Explicitly center the text */
+    /* Optional: Add a subtle shadow for more pop */
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); */
 }
 
-.login-container header p {
-    font-size: 1.2rem; /* Smaller subtitle */
-    margin-bottom: 2em;
-    color: #aaa; /* Subdued color */
+.login-container .brand-tagline { /* Was header p */
+    font-size: 1.3rem; /* Reduce slightly to fit one line */
+    margin-bottom: 0.8rem; /* Set smaller equal spacing */
+    /* color: #aaa; Subdued color */
+    color: #000000; /* Pure black */
+    text-transform: uppercase; /* Uppercase text */
+    letter-spacing: 0.1em; /* Add letter spacing */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Ensure sans-serif */
+    /* Optional: Add a subtle shadow for more pop */
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); */
 }
 
-.login-container main h2 {
-    font-size: 1.8rem; /* Smaller heading */
+.login-container .join-heading { /* Was main h2 */
+    font-size: 1.4rem; /* Make smaller */
     font-weight: bold;
-    margin-bottom: 1em;
+    margin-bottom: 0;
+    text-transform: uppercase; 
+    letter-spacing: 0.1em; 
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; 
+    color: #000000; 
+    visibility: hidden; /* Hide the element */
+    height: 0; /* Collapse its height */
+    /* Optional: Add a subtle shadow for more pop */
+    /* text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7); */
 }
 
 /* General Button Style */
@@ -68,33 +136,71 @@
     color: inherit;
 }
 
-.social-signup {
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #fff; /* White border for white buttons */
-    /* display: flex; /* Keep flex if using icons */
-    /* align-items: center; */
-    /* justify-content: center; */
+/* Use a more specific selector */
+button.social-signup {
+    /* background-color: #fff; */
+    background-color: #000000; /* Black background */
+    /* color: #000; Ensure black text */
+    color: #ffffff; /* White text */
+    /* border: 1px solid #fff; */
+    border: 1px solid #000000; /* Black border (effectively invisible) */
+    display: inline-flex; /* Use inline-flex for centering */
+    align-items: center;    /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    width: 100%; /* Take full width defined by container/max-width */
+    /* position: relative; /* No longer needed with flex */
+}
+
+.button-icon {
+    height: 1.1em;
+    width: 1.1em;
+    margin-right: 0.6em;
 }
 
 /* .social-signup img { ... Keep if using logos ...} */
 
 .divider {
-    margin: 1.5em 0;
-    position: relative;
+    margin: 0.2em 0; /* Minimize top and bottom margin */
+    /* position: relative; No longer needed for basic line */
     text-align: center; /* Center the 'or' text */
-    color: #aaa;
+    /* color: #aaa; */
+    /* color: #ffffff; Set default color for pseudo-element */
     width: 100%;
     /* max-width: 350px; /* Remove max-width */
+    display: flex; /* Use flexbox */
+    align-items: center; /* Center items vertically */
+    color: #000000; /* Default color for lines via pseudo-elements */
 }
 
 .divider span {
-    background-color: #000; /* Match page background */
-    padding: 0 10px;
-    position: relative;
-    z-index: 1;
+    /* background-color: #000000; Black background */
+    background-color: transparent; /* Remove background */
+    color: #ffffff; /* White text */
+    /* padding: 2px 10px; Adjust padding slightly */
+    padding: 0 10px; /* Horizontal padding only */
+    /* border-radius: 5px; Optional: slightly rounded edges */
+    /* position: relative; Not needed */
+    /* z-index: 1; Not needed */
+    font-weight: bold;
+    white-space: nowrap; /* Prevent wrapping */
 }
 
+.divider::before,
+.divider::after { /* Style both lines */
+    content: '';
+    /* position: absolute; Not needed */
+    /* top: 50%; Not needed */
+    /* left: 0; Not needed */
+    /* width: 100%; Not needed */
+    flex-grow: 1; /* Allow lines to grow */
+    height: 1px;
+    /* background-color: #000000; Black line */
+    background-color: #888888; /* Gray line */
+    /* z-index: 0; Not needed */
+}
+
+/* Remove old ::before rule if it only contained the line */
+/*
 .divider::before {
     content: '';
     position: absolute;
@@ -102,39 +208,53 @@
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: #333; /* Line color */
+    background-color: #000000; 
     z-index: 0;
 }
+*/
 
-/* Remove ::after as ::before spans full width */
-/* .divider::after { ... } */
-
-.create-account {
-    background-color: #0095F6; /* Instagram-like Blue */
-    color: #fff;
-    border: none; /* No border for solid color button */
+/* Use more specific selector for Create Account button */
+.login-container main button.create-account {
+    /* background-color: #0095F6; Instagram-like Blue */
+    /* background-color: #000000; Black background */
+    background-color: #0095F6; /* Restore Instagram-like Blue */
+    color: #ffffff !important; /* Ensure white text, use !important if necessary */
+    /* border: none; No border for solid color button */
+    /* border: 1px solid #000000; Match other buttons */
+    border: none; /* No border needed for blue button */
+    margin-bottom: 0; /* Remove margin-bottom completely */
 }
+
+/* Comment out the less specific rule if needed */
+/*
+.create-account {
+    background-color: #0095F6; 
+    color: #ffffff; 
+    border: none; 
+}
+*/
 
 .terms {
     font-size: 0.75rem; /* Smaller text */
-    color: #aaa;
-    margin-top: 0.5em; /* Less space above */
-    margin-bottom: 2em; /* Space below */
+    color: #000000; /* Pure black */
+    margin-top: 0; /* Remove space above terms completely */
+    margin-bottom: 0; /* Remove space below terms */
     text-align: center;
+    /* Optional: Add a subtle shadow for more pop */
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
 
 .terms a {
-    color: #ccc; /* Lighter link color on black */
-    text-decoration: none;
+    /* color: #ccc; Lighter link color on black */
+    color: #000000; /* Pure black */
+    text-decoration: underline; /* Add underline for clarity */
 }
 
-.terms a:hover {
-    text-decoration: underline;
-}
+/* .terms a:hover { ... } */ /* Keep default hover */
 
 .login-container footer {
-     margin-top: auto; /* Push footer towards bottom if container isn't full height */
-     padding-top: 1rem;
+     margin-top: 4rem; /* Decrease margin-top to move footer up */
+     padding-top: 0; /* Remove space above footer content */
      width: 100%;
      text-align: center;
 }
@@ -142,22 +262,33 @@
 .login-container footer p {
     font-size: 1rem;
     margin-bottom: 0.5em;
+    color: #ffffff; /* Pure white for visibility */
+    font-weight: 600; /* Make text thicker (semi-bold) */
+    /* Optional: Add a subtle shadow for more pop */
+    /* text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8); */
 }
 
-.sign-in-link { /* Style for the Link component */
-    color: #0095F6; /* Instagram-like Blue */
+/* Use a more specific selector to override general button color */
+.login-container footer button.sign-in-link { /* Style for the Button acting as a link */
+    /* Restore black button style */
+    color: #1DA1F2; /* Blue text */
     font-weight: bold;
-    text-decoration: none;
+    /* text-decoration: none; Not needed for button */
     font-size: 1rem;
-    background: none;
-    border: none;
+    background-color: #000000; /* Black background */
+    border: 1px solid #000000; /* Black border */
     cursor: pointer;
-    padding: 0;
+    /* padding: 0; Reset padding for link-like appearance */
+    /* Re-apply general button padding (or inherit) */
+    padding: 0.8em 1em; /* Match general button */
 }
 
-.sign-in-link:hover {
-    text-decoration: underline;
+/* Remove hover effect specific to link style */
+/*
+.login-container footer button.sign-in-link:hover {
+    text-decoration: underline; 
 }
+*/
 
 /* Remove old sign-in button style if not used elsewhere */
 /* .sign-in { ... } */
@@ -243,7 +374,7 @@
 
 .modal-content {
     background-color: #000;
-    padding: 2rem;
+  padding: 2rem;
     border-radius: 16px;
     width: 100%;
     max-width: 600px; 
@@ -269,7 +400,7 @@
 }
 
 .modal-content h2 {
-    text-align: center;
+  text-align: center;
     margin-bottom: 1.5rem;
     font-size: 1.5rem;
 }
@@ -290,7 +421,7 @@
 .form-group input[type="date"],
 .form-group input[type="password"] {
     width: 100%;
-    padding: 1rem;
+    padding: 1rem; /* Base padding ONLY - REMOVE padding-right here */
     background-color: #000;
     border: 1px solid #38444d;
     border-radius: 4px;
@@ -324,515 +455,24 @@
     display: none;
 }
 
-/* Sign-in Modal Specific */
-#sign-in-modal .modal-content {}
-#sign-in-modal .modal-title {
-    font-size: 1.8rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1.5em;
-}
-#sign-in-modal .social-signup { margin-bottom: 1em; }
-#sign-in-modal .divider { margin: 1.5em 0; }
-#sign-in-modal .form-group input[type="text"] { padding: 1.2em 1em; }
-
-.next-btn {
-    background-color: #fff;
-    color: #000;
-    font-weight: bold;
-    margin-top: 1em;
-    border-radius: 25px;
-    padding: 1em;
-    font-size: 1rem;
-}
-
-.forgot-password-btn {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #536471;
-    font-weight: bold;
-    margin-top: 1em;
-    margin-bottom: 2em;
-    border-radius: 25px;
-    padding: 1em;
-    font-size: 1rem;
-}
-
-.signup-prompt {
-    color: #71767b;
-    font-size: 0.9rem;
-    text-align: left; /* Keep left aligned */
-    max-width: 600px; /* Match modal width? */
-    margin: 0 auto; /* Center block */
-}
-
-.signup-prompt a.open-signup-link {
-    color: #1DA1F2;
-    text-decoration: none;
-}
-
-.signup-prompt a.open-signup-link:hover { text-decoration: underline; }
-
-/* === App Layout Styles === */
-
-/* Body style handled by index.css */
-
-.sidebar {
-    width: 240px; 
-    background-color: #000; 
-    padding: 1.5rem 1rem;
-    border-right: 1px solid #38444d; 
-    display: flex;
-    flex-direction: column;
-    position: fixed; 
-    height: 100%;
-    left: 0;
-    top: 0;
-    z-index: 100;
-}
-.main-content {
-    flex-grow: 1; 
-    padding: 1.5rem;
-    margin-left: 240px; 
-    overflow-y: auto;
-}
-
-.sidebar-logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
-    color: #fff;
-}
-.sidebar-search {
-    display: flex;
-    align-items: center; 
-    background-color: #222;
-    border-radius: 20px;
-    padding: 0.5rem 1rem;
-    margin-bottom: 1.5rem;
-}
-.sidebar-search input {
-    background: none;
-    border: none;
-    color: #fff;
-    outline: none;
-    flex-grow: 1;
-    margin-left: 0.5rem;
-    font-size: 1rem;
-}
- .sidebar-search span { color: #aaa; }
-
-.sidebar-nav a.nav-link {
-    display: flex;
-    align-items: center;
-    padding: 0.8rem 0.5rem;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    margin-bottom: 0.5rem;
-    font-size: 1.1rem;
-    background: none;
-    border: none;
-    width: 100%;
-    text-align: left;
-    cursor: pointer;
-}
-.sidebar-nav a.nav-link:hover {
-    background-color: #222;
-}
-.sidebar-nav a.nav-link.active { /* Need JS to add this class */
-    background-color: #333;
-    font-weight: bold;
-}
- .sidebar-nav a.nav-link span.icon {
-    margin-right: 1rem;
-    font-size: 1.3rem;
-    width: 24px;
-    display: inline-block;
-    text-align: center;
-}
-.sidebar-footer {
-    margin-top: auto; 
-    padding-top: 1rem;
-    font-size: 0.8rem;
-    color: #aaa;
-}
-.sidebar-footer a {
-    color: #aaa;
-    text-decoration: none;
-    margin: 0 0.3rem;
-}
- .sidebar-footer a:hover { text-decoration: underline; }
-
- .logout-btn {
-    background: none;
-    border: 1px solid #555;
-    color: #aaa;
-    padding: 0.3rem 0.8rem;
-    font-size: 0.8rem;
-    border-radius: 5px;
-    cursor: pointer;
-    display: block; 
-    width: 100%; 
-    margin-top: 1rem; 
-    margin-bottom: 0.5rem; 
-    text-align: center;
- }
-
- .logout-btn:hover {
-     background-color: #222;
-     color: #fff;
- } 
-
-/* === Marketplace Styles === */
-
-.marketplace-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0; 
-    margin-bottom: 1rem;
-}
-
-.marketplace-header h2 {
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.marketplace-header .actions .action-btn {
-    background: #333;
-    color: #fff;
-    border: none;
-    border-radius: 50%; 
-    width: 40px;
-    height: 40px;
-    font-size: 1.2rem;
-    margin-left: 0.5rem;
-    padding: 0; 
-    display: inline-flex; 
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    /* Reset general button styles */
-    margin-bottom: 0;
-}
-
-.marketplace-filters {
-    display: flex;
-    gap: 0.5rem; 
-    margin-bottom: 1.5rem;
-}
-
-.marketplace-filters button {
-    background: #333;
-    color: #fff;
-    padding: 0.5em 1.5em;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: bold;
-    width: auto; 
-    margin: 0; 
-}
-
-.section-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 1rem;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); 
-    gap: 1rem;
-    margin-bottom: 2rem;
-}
-
-.product-item {
-    background-color: #111; 
-    border-radius: 8px;
-    overflow: hidden; 
-    cursor: pointer;
-}
-
-.product-item img {
-    display: block;
-    width: 100%;
-    height: 150px; 
-    object-fit: cover; 
-}
-
-.product-item p {
-    padding: 0.5rem 0.75rem;
-    margin: 0;
-}
-
-.product-item .price {
-    font-weight: bold;
-    font-size: 1rem;
-}
-
-.product-item .name {
-    font-size: 0.9rem;
-    color: #ccc;
-    padding-top: 0; 
-}
-
-/* === Explore Page Styles === */
-
- .explore-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); 
-    grid-auto-rows: minmax(150px, auto); 
-    gap: 4px; 
- }
-
- .explore-item {
-     background-color: #222; 
-     overflow: hidden;
-     position: relative; 
-     cursor: pointer;
- }
-
- .explore-item.tall { grid-row: span 2; }
- .explore-item.wide { grid-column: span 2; }
- .explore-item.large { grid-column: span 2; grid-row: span 2; }
-
- .explore-item img {
-     display: block;
-     width: 100%;
-     height: 100%;
-     object-fit: cover; 
- }
-
- @media (max-width: 768px) {
-    .explore-grid {
-        grid-template-columns: repeat(3, 1fr); 
-        grid-auto-rows: minmax(120px, auto); 
-        gap: 2px; 
-    }
-    .explore-item.tall { grid-row: span 1; } 
-     .explore-item.wide { grid-column: span 1; }
-     .explore-item.large { grid-column: span 1; grid-row: span 1; }
- }
-
- /* === Messages Page Styles === */
-
- .messages-container {}
- .messages-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem 0; 
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid #38444d; 
- }
-
- .messages-header h2 { font-size: 1.8rem; font-weight: bold; }
-
- .messages-header .new-message-icon {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    /* Reset general button styles */
-    margin-bottom: 0;
- }
-
- .chat-list {}
- .chat-item {
-    display: flex;
-    align-items: center;
-    padding: 1rem 0.5rem;
-    border-bottom: 1px solid #222; 
-    cursor: pointer;
-    transition: background-color 0.2s ease;
- }
-
- .chat-item:hover { background-color: #111; }
-
- .chat-item .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 1rem;
-    object-fit: cover;
- }
-
- .chat-preview {
-    flex-grow: 1;
-    overflow: hidden; 
- }
-
- .chat-preview p {
-    margin: 0;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
- }
-
- .chat-preview .chat-name { font-weight: bold; font-size: 1rem; margin-bottom: 0.2rem; color: #fff; }
- .chat-preview .last-message { font-size: 0.9rem; color: #aaa; }
- .chat-item .timestamp { font-size: 0.8rem; color: #aaa; margin-left: 1rem; white-space: nowrap; }
-
- .chat-item.active .chat-name,
- .chat-item.active .last-message { font-weight: bold; color: #fff; }
- .chat-item.active .last-message::before { content: "• "; color: #1DA1F2; font-weight: bold; }
- 
- /* === Profile Page Styles === */
-
- .profile-header {
-    display: flex;
-    align-items: center;
-    margin-bottom: 2.5rem;
- }
-
- .profile-avatar {
-    width: 150px; 
-    height: 150px;
-    border-radius: 50%;
-    margin-right: 3rem; 
-    object-fit: cover;
-    flex-shrink: 0; 
- }
-
- .profile-info { flex-grow: 1; }
- .profile-title {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
- }
-
- .profile-title .username { font-size: 1.8rem; font-weight: 300; margin-right: 1.5rem; }
-
- .profile-action-btn {
-    background-color: #333; 
-    color: #fff;
-    border: none;
-    border-radius: 8px;
-    padding: 0.5rem 1rem;
-    font-weight: bold;
-    font-size: 0.9rem;
-    cursor: pointer;
-    margin-right: 0.8rem;
-    width: auto; 
-    margin-bottom: 0; 
- }
-
- .profile-action-btn.icon-btn { background: none; font-size: 1.5rem; padding: 0; width: auto; margin-right: 0; }
-
- .profile-stats { display: flex; margin-bottom: 1.5rem; }
- .profile-stats span { margin-right: 2.5rem; font-size: 1rem; }
- .profile-stats span strong { font-weight: bold; }
- .profile-bio .name { font-weight: bold; margin-bottom: 0.3rem; }
- .profile-bio p { margin: 0; margin-bottom: 0.3rem; line-height: 1.4; }
- .profile-bio a { color: #1DA1F2; text-decoration: none; font-weight: bold; }
-
- .profile-highlights {
-    display: flex;
-    margin-bottom: 2.5rem;
-    padding-bottom: 1.5rem;
-    border-bottom: 1px solid #38444d;
- }
-
- .highlight-item { text-align: center; margin-right: 1.5rem; cursor: pointer; }
- .highlight-circle {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 1px solid #555; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 0.5rem;
-    overflow: hidden; 
- }
-
- .highlight-circle img { width: 100%; height: 100%; object-fit: cover; }
- .highlight-circle.add-highlight { font-size: 2rem; color: #777; }
- .highlight-name { font-size: 0.8rem; }
-
- .profile-content-tabs {
-    display: flex;
-    justify-content: center; 
-    border-top: 1px solid #38444d;
-    margin-bottom: 1rem; 
- }
-
- .profile-content-tabs .tab-item {
-    background: none;
-    border: none;
-    color: #aaa;
-    padding: 1rem 1.5rem;
-    font-size: 0.8rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    cursor: pointer;
-    border-top: 1px solid transparent; 
-    margin-top: -1px; 
-    width: auto;
-    margin-bottom: 0;
- }
-
- .profile-content-tabs .tab-item.active { color: #fff; border-top: 1px solid #fff; }
- .profile-content-tabs .tab-item .icon { margin-right: 0.5rem; }
-
- .profile-posts-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
- }
- 
- /* === Floating Action Button (FAB) Styles === */
-.fab {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #1DA1F2; 
-    color: #fff;
-    border: none;
-    border-radius: 50%; 
-    width: 60px;
-    height: 60px;
-    font-size: 1.8rem; 
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); 
-    cursor: pointer;
-    display: flex; 
-    justify-content: center;
-    align-items: center;
-    z-index: 1010; 
-    padding: 0;
-    margin: 0;
-    width: 60px; 
-}
-
-.fab:hover {
-    background-color: #1a91da; 
-} 
-
-/* Placeholder for Google/Apple logos in React */
-/* We might need actual SVG components or img tags later */
-
 /* Sign-in Modal Specific Styles */
 .sign-in-modal-content {
     /* Inherits .modal-content defaults */
     max-width: 500px; /* Adjust max width if needed */
     text-align: center; /* Center align text inside modal */
+    padding-top: 0rem !important; /* Remove top padding completely */
+    padding-bottom: 1.5rem !important; /* Adjust bottom padding if needed */
+    padding-left: 2rem !important; /* Keep horizontal padding */
+    padding-right: 2rem !important; /* Keep horizontal padding */
 }
 
 .sign-in-modal-content .modal-title {
+    margin-top: 3rem !important; /* Increase space above this title significantly */
+    /* Keep other styles */
     font-size: 1.8rem;
     font-weight: bold;
     text-align: center;
-    margin-top: 0.5em; /* Add space above if logo is removed */
-    margin-bottom: 1.5em;
+    /* margin-bottom: 1.5em; Keep default or adjust if needed */
 }
 
 /* Reuse .social-signup */
@@ -849,34 +489,45 @@
     margin-right: auto;
 }
 
-/* Reuse .form-group */
-.sign-in-modal-content .form-group input[type="text"] {
-    padding: 1.2em 1em;
-    max-width: 300px; /* Limit width */
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left; /* Keep placeholder text left-aligned */
+/* Reuse .form-group - Apply consistent width/centering */
+.sign-in-modal-content .form-group input[type="text"]:not([placeholder*="Password"]) /* Target text inputs NOT the password one */,
+.sign-in-modal-content .form-group input[type="email"] /* Target email input too if present */
+{
+    padding: 1.2em 1em !important; /* Consistent padding */
+    max-width: 300px !important; /* Force max-width */
+    width: 100% !important; /* Ensure it tries to take full width up to max-width */
+    margin-left: auto !important; /* Force centering */
+    margin-right: auto !important; /* Force centering */
+    text-align: left !important; /* Keep placeholder text left-aligned */
+    box-sizing: border-box !important; /* Consistent sizing */
+    height: 46px !important; /* Match password height */
+    line-height: normal !important; /* Match password line-height */
+    font-size: 1rem !important; /* Match password font-size */
+    background-color: #000 !important; 
+    border: 1px solid #38444d !important; 
+    border-radius: 4px !important; 
+    color: #fff !important; 
 }
 
 /* Reuse .next-btn */
 .sign-in-modal-content .next-btn {
     background-color: #fff;
-    color: #000;
+    color: #000 !important; /* <<< ADD THIS LINE FOR BLACK TEXT */
     font-weight: bold;
     margin-top: 1em;
     border-radius: 25px;
-    padding: 0.8em; /* Adjust padding */
+    padding: 0.5em 1em; /* Reduced vertical padding */
     font-size: 1rem;
-    max-width: 300px;
+    max-width: 280px; /* Reduced width */
     margin-left: auto;
     margin-right: auto;
 }
 
 /* Reuse .forgot-password-btn */
 .sign-in-modal-content .forgot-password-btn {
-    background-color: transparent;
-    color: #fff;
-    border: 1px solid #536471;
+    background-color: #000000 !important; /* Ensure black background */
+    color: #ffffff !important; /* Ensure white text */
+    border: 1px solid #536471 !important; /* Subtle grey/blue border like X */
     font-weight: bold;
     margin-top: 1em;
     margin-bottom: 2em;
@@ -906,3 +557,661 @@
 .sign-in-modal-content .signup-prompt a:hover {
      text-decoration: underline;
 }
+
+/* === Sign Up Modal Styles === */
+
+.sign-up-modal-content {
+    /* Inherits .modal-content defaults like padding, border-radius */
+    background-color: #000; /* Black background */
+    max-width: 600px; /* Match Sign In modal width */
+    text-align: left; /* Align text to left by default */
+    position: relative; /* For positioning close button */
+    padding-top: 0.5rem; /* Further reduce top padding */
+}
+
+.sign-up-modal-content .close-modal-btn {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #fff; /* White X */
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    /* Reset general button styles that might interfere */
+    width: auto;
+    margin: 0;
+}
+
+.sign-up-modal-content h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #fff; /* White text */
+    text-align: center; /* Center align like X example */
+    margin-top: 1rem; /* Add some space below brand title */
+    margin-bottom: 1.5rem;
+}
+
+/* Add style for Mydrobe title in modal */
+.sign-up-modal-content .modal-brand-title {
+    color: #ffffff; /* White text */
+    font-size: 1.2rem; /* Scaled up by 1.2x */
+    font-weight: bold;
+    text-align: center; /* Center align */
+    text-transform: uppercase; /* Match landing page style */
+    letter-spacing: 0.1em; /* Match landing page style */
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; /* Ensure consistent font */
+    margin-top: 0; /* Move closer to top */
+    margin-bottom: 0.5rem; /* Reduce space before h2 */
+}
+
+/* Input styles within Sign Up Modal */
+.sign-up-modal-content .form-group input[type="text"],
+.sign-up-modal-content .form-group input[type="email"] {
+    /* Inherits general .form-group input styles */
+    padding: 1.2rem 1rem; /* Match padding */
+}
+
+/* Style for input error */
+.sign-up-modal-content .form-group input.input-error {
+    border-color: #dc3545; /* Red border for error */
+}
+
+/* Specific style for field-level error messages */
+.field-error-message {
+    color: #dc3545; /* Red text */
+    font-size: 0.8rem; /* Smaller font size */
+    text-align: left; /* Align text left under the input */
+    margin-top: 0.3rem; /* Space below the input */
+    margin-bottom: 0; /* Reset bottom margin if needed */
+}
+
+/* Date of Birth Section */
+.sign-up-modal-content .dob-section {
+    margin-top: 1.5rem; /* Space above DOB */
+}
+
+.sign-up-modal-content .dob-section label {
+    /* Inherits general label style */
+    font-weight: bold;
+    color: #fff; /* White label */
+}
+
+.sign-up-modal-content .dob-section .input-hint {
+    /* Inherits general hint style */
+    font-size: 0.9rem; /* Adjust size if needed */
+    margin-bottom: 0.8rem;
+}
+
+.sign-up-modal-content .dob-inputs {
+    display: flex; /* Align selects horizontally */
+    gap: 1rem; /* Space between selects */
+}
+
+.sign-up-modal-content .dob-inputs select {
+    flex-grow: 1; /* Allow selects to share space */
+    padding: 1rem; /* Consistent padding */
+    background-color: #000; /* Black background */
+    border: 1px solid #38444d; /* Twitter-like border */
+    border-radius: 4px;
+    color: #fff; /* White text */
+    font-size: 1rem;
+    /* Basic appearance reset for consistent look */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Simple background arrow (replace with SVG for better control) */
+    background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+}
+
+.sign-up-modal-content .dob-inputs select:focus {
+    outline: none;
+    border-color: #1DA1F2; /* Twitter blue focus */
+}
+
+/* Style for the main submit button ('Create Account') */
+.sign-up-modal-content .submit-btn.next-btn {
+    /* Default (Inactive/Disabled) State */
+    background-color: #536471; /* Darker grey for inactive state */
+    color: #000000; /* Black text */
+    font-weight: bold;
+    margin-top: 2rem; /* More space above button */
+    width: 100%; /* Full width */
+    border-radius: 25px;
+    padding: 0.8em 1em; /* Adjust padding */
+    font-size: 1rem;
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+    cursor: not-allowed; /* Indicate disabled state */
+    opacity: 0.8; /* Slightly faded */
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease; /* Smooth transition */
+}
+
+/* Active State (when not disabled) */
+.sign-up-modal-content .submit-btn.next-btn:not(:disabled) {
+    background-color: #ffffff; /* White background for active */
+    color: #000000; /* Black text for active */
+    cursor: pointer; /* Pointer cursor */
+    opacity: 1; /* Full opacity */
+}
+
+/* Removed Step 2 specific styles */
+/* .back-modal-btn { ... } */
+/* .info-text { ... } */
+/* input[placeholder="Verification code"] { ... } */
+/* .link-button { ... } */
+
+/* === End Sign Up Modal Styles === */
+
+/* Add styles for password rules list */
+.password-rules-list {
+    margin-top: 0.8rem; /* Space below password input */
+    margin-bottom: 1rem; /* Space before DOB section */
+    font-size: 0.85rem;
+    color: #aaa; /* Default text color */
+    text-align: left;
+}
+
+.password-rules-list p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #fff; /* White heading */
+}
+
+.password-rules-list ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.password-rule {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.3rem;
+    transition: color 0.3s ease;
+}
+
+.rule-indicator {
+    margin-right: 0.5em;
+    width: 1em; /* Ensure consistent alignment */
+    display: inline-block;
+    text-align: center;
+    /* color: #dc3545; Default red indicator */
+    color: #aaa; /* Default grey indicator */
+    font-weight: bold;
+    transition: color 0.3s ease; /* Added transition */
+}
+
+.rule-text {
+     /* color: #dc3545; Default red text */
+     color: #aaa; /* Default grey text */
+     transition: color 0.3s ease; /* Added transition */
+}
+
+/* Styles for valid rules */
+.password-rule.valid .rule-indicator,
+.password-rule.valid .rule-text {
+    color: #28a745; /* Green color for valid */
+}
+
+/* Styles for invalid rules (applied only after input started) */
+.password-rule.invalid .rule-indicator,
+.password-rule.invalid .rule-text {
+    color: #dc3545; /* Red color for invalid */
+}
+
+/* Add general modal message styles */
+.modal-message {
+    text-align: center;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+}
+
+.success-message.modal-message {
+    background-color: #d4edda; /* Light green */
+    color: #155724; /* Dark green */
+    border: 1px solid #c3e6cb;
+}
+
+.error-message.modal-message {
+    background-color: #f8d7da; /* Light red */
+    color: #721c24; /* Dark red */
+    border: 1px solid #f5c6cb;
+}
+
+/* Specific style for field-level error messages */
+.field-error-message {
+    /* Inherits .error-message color */
+    font-size: 0.8rem; /* Smaller font size */
+    text-align: left; /* Align text left under the input */
+    margin-top: 0.3rem; /* Space below the input */
+    margin-bottom: 0; /* Reset bottom margin if needed */
+    /* Remove background/border from general modal message */
+    background-color: transparent;
+    border: none;
+    padding: 0;
+}
+
+/* Style for password input */
+.sign-up-modal-content .form-group input[type="password"],
+.sign-up-modal-content .form-group input[type="text"][placeholder="Password"] /* Target based on type change */
+{
+    padding: 1.2rem 1rem; /* Match other inputs */
+    /* Adjust right padding to make space for BOTH icons */
+    padding-right: 4.5rem; /* Increased padding for two icons */
+}
+
+/* Style for the password input wrapper */
+.password-input-group {
+    position: relative !important; /* Force relative context */
+}
+
+/* Style for the Warning icon */
+.password-warning-icon {
+    position: absolute;
+    /* Position it to the left of the eye button */
+    right: 40px; /* Approx eye button width (1.2em * font-size) + spacing */ 
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.2em; /* Match eye icon size */
+    height: 1.2em;
+    color: #dc3545; /* Red warning color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.password-warning-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+/* Style for the toggle (eye) button */
+/* Increased Specificity */
+.sign-up-modal-content .form-group.password-input-group button.password-toggle-btn {
+    position: absolute !important;
+    /* right: 10px !important; Position closer with reduced padding */
+    right: 12px !important; /* Adjust position slightly right */
+    top: 50% !important;
+    transform: translateY(-20%) !important;
+    background: transparent !important; 
+    border: none !important;
+    color: #aaa !important; /* Fallback color */
+    cursor: pointer !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 1.2em !important; /* Smaller icon button size */
+    height: 1.2em !important; /* Smaller icon button size */
+    max-width: none !important;
+    border-radius: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    z-index: 2 !important;
+    font-size: 1rem !important;
+}
+
+/* Style the SVG icon itself - Increased Specificity */
+.sign-up-modal-content .form-group.password-input-group button.password-toggle-btn svg {
+    width: 100% !important;
+    height: 100% !important;
+    stroke: #aaa !important;
+    fill: none !important;
+}
+
+.sign-up-modal-content .form-group.password-input-group button.password-toggle-btn:hover svg {
+    stroke: #fff !important;
+}
+
+/* Style for input error (applies to email, password, etc.) */
+.sign-up-modal-content .form-group input.input-error {
+    border-color: #dc3545; /* Red border for error */
+}
+
+/* Date of Birth Section */
+/* ... existing code ... */
+
+/* Style for the main submit button ('Create Account') */
+.sign-up-modal-content .submit-btn.next-btn {
+    /* Default (Inactive/Disabled) State */
+    background-color: #536471; /* Darker grey for inactive state */
+    color: #000000; /* Black text */
+    font-weight: bold;
+    margin-top: 2rem; /* More space above button */
+    width: 100%; /* Full width */
+    border-radius: 25px;
+    padding: 0.8em 1em; /* Adjust padding */
+    font-size: 1rem;
+    border: none;
+    margin-left: 0;
+    margin-right: 0;
+    max-width: none;
+    cursor: not-allowed; /* Indicate disabled state */
+    opacity: 0.8; /* Slightly faded */
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease; /* Smooth transition */
+}
+
+/* Active State (when not disabled) */
+.sign-up-modal-content .submit-btn.next-btn:not(:disabled) {
+    background-color: #ffffff; /* White background for active */
+    color: #000000; /* Black text for active */
+    cursor: pointer; /* Pointer cursor */
+    opacity: 1; /* Full opacity */
+}
+
+/* Removed Step 2 specific styles */
+/* .back-modal-btn { ... } */
+/* .info-text { ... } */
+/* input[placeholder="Verification code"] { ... } */
+/* .link-button { ... } */
+
+/* === End Sign Up Modal Styles === */
+
+/* Style buttons specifically within the forgot password view */
+.forgot-password-view .submit-btn {
+  color: #000000; /* Black text for Send Reset Link button */
+  /* Add any other specific overrides if needed, e.g., background */
+}
+
+.forgot-password-view .link-button.back-link {
+  color: #000000; /* Black text for Back to Sign In link */
+  /* Add any other specific overrides if needed */
+}
+
+/* Ensure password input group allows absolute positioning */
+.password-input-group {
+  position: relative;
+}
+
+/* Style password input to make space for the button */
+.password-input-group input[type="password"],
+.password-input-group input[type="text"] { /* Apply padding to text type too when visible */
+  /* Adjust padding-right to fit the button comfortably */
+  /* Value might need tweaking based on button size */
+  padding-right: 3.5rem; 
+}
+
+/* Position the toggle button inside the input group */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px; 
+  top: 50%;
+  /* Adjust vertical centering lower still */
+  transform: translateY(-20%); /* Try -20% */
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  line-height: 0; 
+   width: auto; 
+   height: auto; 
+}
+
+/* Style the SVG icon directly */
+.password-toggle-btn svg {
+   /* Explicitly set size as fallback for w-6 h-6 */
+   width: 24px; 
+   height: 24px;
+   /* Set a visible stroke color */
+   stroke: #aeaeae; /* Light grey, adjust as needed */
+   /* Ensure stroke width is reasonable if not set in SVG */
+   stroke-width: 1.5; 
+}
+
+/* Optional: Darker color on hover? */
+.password-toggle-btn:hover svg {
+    stroke: #ffffff; /* White on hover */
+}
+
+/* === Ensure these styles apply in ActionHandlerPage too === */
+/* (They should automatically if the class names match) */
+
+/* ... rest of styles ... */
+
+/* General toggle button positioning */
+.password-toggle-btn {
+  position: absolute;
+  right: 12px; 
+  top: 50%;
+  /* Using the last known desired value */
+  transform: translateY(-20%); 
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  cursor: pointer;
+  line-height: 0; 
+   width: auto; 
+   height: auto; 
+}
+
+/* General SVG styles */
+.password-toggle-btn svg {
+   width: 24px; 
+   height: 24px;
+   stroke: #aeaeae; 
+   stroke-width: 1.5; 
+}
+.password-toggle-btn:hover svg {
+    stroke: #ffffff; 
+}
+
+/* === Specific overrides for SignInModal === */
+/* Ensure the positioning is applied even if other modal styles interfere */
+.sign-in-modal-content .password-toggle-btn {
+    position: absolute !important;
+    right: 80px !important; /* Increase to move left */
+    top: 40% !important;
+    transform: translateY(-30%) !important; /* Adjust to move up */
+    padding: 0 !important; /* Remove padding around the icon */
+    line-height: 0 !important;
+    /* Ensure size is determined by SVG */
+    width: auto !important; 
+    height: auto !important;
+    background: transparent !important; /* Ensure no background */
+    border: none !important; /* Ensure no border */
+}
+
+/* Force SVG styling within SignInModal */
+.sign-in-modal-content .password-toggle-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+    stroke: #aeaeae !important; /* Force the visible color */
+    stroke-width: 1.5 !important;
+}
+
+.sign-in-modal-content .password-toggle-btn:hover svg {
+    stroke: #ffffff !important; /* Force hover color */
+}
+
+/* Ensure input has padding */
+.sign-in-modal-content .password-input-group input[type="password"],
+.sign-in-modal-content .password-input-group input[type="text"] {
+    padding-right: 3.5rem !important; /* Force padding */
+}
+
+/* ... rest of styles ... */
+
+/* Keep Sign Up Padding Override */
+.sign-up-modal-content .password-input-group input[type="password"],
+.sign-up-modal-content .password-input-group input[type="text"] {
+    padding-right: 4.5rem !important; /* Override for TWO icons */
+}
+
+/* ... Keep other necessary styles ... */
+
+/* General Modal Styles */
+.modal-content {
+  /* Ensure relative positioning for absolute children like the close button */
+  position: relative;
+  /* ... other modal content styles ... */
+}
+
+/* Specific Styling for SignInModal Close Button */
+.sign-in-modal-content .close-modal-btn {
+  position: absolute !important; /* Position relative to modal-content */
+  top: 10px !important;         /* Distance from top */
+  left: 10px !important;        /* Distance from left */
+  right: auto !important;       /* Override any previous right positioning */
+  
+  /* Make button smaller */
+  padding: 0 !important;         /* Remove padding */
+  width: 28px !important;       /* Explicit small width */
+  height: 28px !important;      /* Explicit small height */
+  
+  /* Center the '✕' */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  line-height: 1 !important;     /* Adjust line height for centering */
+  
+  /* Visuals */
+  background: none !important; 
+  border: none !important;
+  color: #ccc !important;       /* Adjust color if needed */
+  font-size: 1.2rem !important; /* Adjust '✕' size if needed */
+  font-weight: bold !important;
+  cursor: pointer !important;
+  z-index: 10 !important;       /* Ensure it's above other content */
+}
+
+.sign-in-modal-content .close-modal-btn:hover {
+  color: #fff !important; /* Example hover color */
+}
+
+/* REMOVE or comment out the general/conflicting .close-modal-btn rule if it exists */
+/* 
+.close-modal-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: #ccc; 
+  cursor: pointer;
+}
+*/
+
+/* ... rest of styles ... */
+
+/* === Specific overrides for SignInModal === */
+
+/* Style the MYDROBE title in the Sign In modal */
+.sign-in-modal-content .modal-brand-title {
+    color: #ffffff; 
+    font-size: 1.1rem; /* Make text smaller */
+    font-weight: bold;
+    text-align: center; 
+    text-transform: uppercase; 
+    letter-spacing: 0.1em; 
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif; 
+    margin-top: 0rem; /* Keep at top of content area */
+    margin-bottom: 1rem; /* Space before the next title */
+}
+
+/* Adjust the 'Sign in to mydrobe' title margin if needed */
+.sign-in-modal-content .modal-title {
+    margin-top: 3rem !important; /* Increase space above this title significantly */
+    /* Keep other styles */
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    /* margin-bottom: 1.5em; Keep default or adjust if needed */
+}
+
+/* Ensure Sign In button text is black */
+.sign-in-modal-content button.submit-btn {
+    color: #000000 !important; /* Force black text */
+    /* Ensure background is white if not already */
+    background-color: #ffffff !important; 
+    width: 300px !important; /* Force specific width */
+    max-width: 300px !important; /* Keep max-width for consistency */
+    box-sizing: border-box !important; /* Ensure padding/border are included in width */
+}
+
+/* Increase space above Google button in Sign In Modal */
+.sign-in-modal-content .social-signup.google {
+    margin-top: 2em !important; /* Increase top margin to push it down */
+    background-color: #ffffff !important; /* White background */
+    color: #000000 !important; /* Black text */
+    border: 1px solid #dadce0 !important; /* Add a standard Google-like light border */
+    width: 300px !important; /* Force specific width */
+    max-width: 300px !important; /* Keep max-width for consistency */
+    box-sizing: border-box !important; /* Ensure padding/border are included in width */
+    /* Keep existing bottom margin or default */
+    /* margin-bottom: 1em; */ 
+}
+
+/* ... other specific overrides for SignInModal ... */
+
+/* ... rest of styles ... */
+
+/* === Login Page Specific Adjustments === */
+
+/* Add more space above the Google button on the landing page */
+.login-container .social-signup.google {
+    margin-top: 2.5em !important; /* Keep this top margin */
+    margin-bottom: 0.2em !important; /* Further decrease bottom margin to move closer to 'or' */
+}
+
+/* ... rest of styles ... */
+
+/* Ensure input has padding and consistent height */
+.sign-in-modal-content .password-input-group input[type="password"],
+.sign-in-modal-content .password-input-group input[type="text"] {
+    /* Apply consistent base styles */
+    padding: 1.2rem 1rem !important; /* Match general text input padding */
+    height: 46px !important; /* Explicit height */
+    line-height: normal !important; /* Consistent line height */
+    font-size: 1rem !important; /* Consistent font size */
+    box-sizing: border-box !important; /* Include padding/border in height */
+    /* Override right padding ONLY for the icon */
+    padding-right: 3.5rem !important; 
+    /* Ensure other necessary styles like background, border, color are inherited or set consistently */
+    background-color: #000 !important; 
+    border: 1px solid #38444d !important; 
+    border-radius: 4px !important; 
+    color: #fff !important; 
+    width: 100% !important; /* Ensure it takes full width of group */
+    max-width: 300px !important; /* Match other inputs in modal */
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: left !important;
+}
+.modal-content .link-button {
+    background: none;
+    border: none;
+    color: #0095f6; /* Blue link color */
+    padding: 0.5em; /* Less padding for link-like buttons */
+    margin-top: 1em;
+    font-weight: normal;
+}
+
+/* Style for the Back to Sign In link specifically */
+.modal-content .back-link {
+    display: block; /* Ensure block display for margin: auto */
+    max-width: 280px; /* Reduced width */
+    margin-left: auto; /* Center it */
+    margin-right: auto;
+    width: 100%; /* Allow it to take width up to max-width */
+    color: #000000 !important; /* Make text black */
+    background-color: #ffffff !important; /* Make background white */
+    border: none !important; /* Remove border to match white button */
+    border-radius: 25px !important; /* Match other buttons */
+    padding: 0.5em 1em !important; /* Reduced vertical padding */
+    font-weight: bold !important; /* Ensure bold text */
+    text-decoration: none !important; /* Remove underline if any */
+    margin-top: 1em; /* Keep existing margin or adjust */
+}
+
+/* === General App Layout === */
+

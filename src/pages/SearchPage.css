@@ -1,0 +1,137 @@
+.search-page-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 15px 0; /* Remove horizontal padding */
+  background-color: #000000; /* Black background */
+  color: #f5f5f5;
+  overflow-y: auto; /* Allow scrolling for content */
+  width: 100%; /* Explicitly set width */
+  box-sizing: border-box; /* Include padding/border in width calculation */
+}
+
+/* Search Bar */
+.search-bar-section {
+  margin-bottom: 15px;
+  padding: 0 15px; /* Add horizontal padding */
+}
+
+.search-input-wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #262626; /* Dark grey background */
+  border-radius: 8px; /* Slightly rounded */
+  padding: 8px 12px;
+}
+
+.search-input-wrapper svg {
+  fill: #a8a8a8; /* Light grey icon */
+  margin-right: 8px;
+}
+
+.search-input-wrapper input[type="text"] {
+  flex-grow: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: #f5f5f5;
+  font-size: 0.9rem;
+}
+
+.search-input-wrapper input[type="text"]::placeholder {
+  color: #a8a8a8;
+}
+
+/* Tabs Section */
+.search-tabs-section {
+  display: flex;
+  border-bottom: 1px solid #38444d; /* Separator line */
+  margin-bottom: 15px;
+  padding: 0 15px; /* Add horizontal padding */
+}
+
+.search-tabs-section .tab-btn {
+  flex-grow: 1; /* Tabs share width */
+  background: none;
+  border: none;
+  color: #a8a8a8; /* Inactive text color */
+  padding: 12px 0;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid transparent; /* Placeholder for active underline */
+  margin-bottom: -1px; /* Overlap border */
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.search-tabs-section .tab-btn:hover {
+  color: #f5f5f5;
+}
+
+.search-tabs-section .tab-btn.active {
+  color: #f5f5f5; /* Active text color */
+  border-bottom-color: #f5f5f5; /* Active underline */
+}
+
+/* Content Grid */
+.search-content-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Keep 3 columns */
+  grid-auto-rows: minmax(100px, auto); /* Set a base row height */
+  grid-auto-flow: dense; /* Attempt to fill gaps */
+  gap: 2px; /* Very small gap */
+  flex-grow: 1;
+}
+
+.grid-item {
+  position: relative; 
+  /* aspect-ratio: 1 / 1; Remove fixed aspect ratio */
+  background-color: #262626; 
+  overflow: hidden; /* Ensure image doesn't overflow */
+}
+
+/* Default item spans 1x1 */
+
+/* Medium item spans 1 column and 2 rows (Vertical Rectangle) */
+.grid-item--medium {
+  grid-column: span 1; /* Explicitly 1 column wide */
+  grid-row: span 2;    /* 2 rows high */
+}
+
+/* Add classes for wide or tall if needed */
+/* 
+.grid-item--wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+.grid-item--tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+*/
+
+.grid-item img {
+  display: block;
+  width: 100%;
+  height: 100%; /* Make image fill the grid item */
+  object-fit: cover;
+}
+
+.content-type-icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: white;
+  font-size: 0.9rem;
+  /* Add background/padding if needed */
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+} 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 

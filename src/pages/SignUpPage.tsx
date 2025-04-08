@@ -14,8 +14,12 @@ const SignUpPage: React.FC = () => {
   const navigate = useNavigate();
   const { currentUser, loading } = useAuth();
 
+  console.log("SignUpPage: Rendering - Loading:", loading, "User:", currentUser ? currentUser.uid : null);
+
   useEffect(() => {
+    console.log("SignUpPage: useEffect running - Loading:", loading, "User:", currentUser ? currentUser.uid : null);
     if (!loading && currentUser) {
+      console.log("SignUpPage: Redirecting to /app");
       navigate('/app');
     }
   }, [currentUser, loading, navigate]);
@@ -53,10 +57,6 @@ const SignUpPage: React.FC = () => {
       }
     }
   };
-
-  if (loading || currentUser) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="signup-container"> {/* Reuse or create styles */}
