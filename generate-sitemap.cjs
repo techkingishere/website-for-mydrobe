@@ -1,18 +1,18 @@
 // generate-sitemap.js
 const { SitemapStream, streamToPromise } = require('sitemap');
-const { createWriteStream } = require('fs');
+const { createWriteStream, existsSync, mkdirSync } = require('fs');
 const path = require('path'); // Import path module
 
 // Define paths relative to the script location
-const publicPath = path.resolve(__dirname, 'public');
-const sitemapPath = path.join(publicPath, 'sitemap.xml');
+const distPath = path.resolve(__dirname, 'dist');
+const sitemapPath = path.join(distPath, 'sitemap.xml');
 
 (async () => {
-  // Ensure public directory exists (optional, createWriteStream usually handles it)
-  // const fs = require('fs');
-  // if (!fs.existsSync(publicPath)) {
-  //   fs.mkdirSync(publicPath, { recursive: true });
-  // }
+  // Ensure dist directory exists (Vite should create it, but check just in case)
+  if (!existsSync(distPath)) {
+    mkdirSync(distPath, { recursive: true });
+    console.log(`Created dist directory: ${distPath}`)
+  }
 
   const sitemap = new SitemapStream({ hostname: 'https://mydrobe.co' });
 
@@ -34,5 +34,6 @@ const sitemapPath = path.join(publicPath, 'sitemap.xml');
     console.log(`Sitemap generated successfully at ${sitemapPath}`);
   } catch (error) {
     console.error('Error generating sitemap:', error);
+    process.exit(1); // Exit with error code if sitemap fails
   }
 })(); 
