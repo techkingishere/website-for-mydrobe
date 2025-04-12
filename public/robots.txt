@@ -1,0 +1,11 @@
+# Allow all user agents
+User-agent: *
+
+# Disallow crawling of the protected application area
+Disallow: /app/
+
+# Allow crawling of the root and potentially other public pages
+Allow: /
+
+# Point to the sitemap
+Sitemap: https://mydrobe.co/sitemap.xml 
